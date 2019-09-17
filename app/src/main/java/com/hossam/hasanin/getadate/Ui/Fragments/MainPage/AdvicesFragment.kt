@@ -1,0 +1,77 @@
+package com.hossam.hasanin.getadate.Ui.Fragments.MainPage
+
+import androidx.lifecycle.ViewModelProviders
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.Query
+import com.hossam.hasanin.getadate.Models.Advice
+
+import com.hossam.hasanin.getadate.R
+import com.hossam.hasanin.getadate.Ui.Adapter.AdvicesAdapter
+import com.hossam.hasanin.getadate.Ui.MainActivity
+import com.hossam.hasanin.getadate.Ui.MainPages
+import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.AdvicesFactory
+import com.hossam.hasanin.getadate.ViewModels.MainPage.AdvicesViewModel
+import kotlinx.android.synthetic.main.advices_fragment.*
+import kotlinx.android.synthetic.main.toolbar.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
+
+class AdvicesFragment : Fragment() , KodeinAware {
+
+    private lateinit var viewModel: AdvicesViewModel
+
+    override val kodein by closestKodein()
+
+    private val advicesFactory:AdvicesFactory by instance()
+
+    private lateinit var advicesAdapter:AdvicesAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.advices_fragment, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        (activity as MainActivity).currentPage = MainPages.ADVICES
+        activity!!.title_toolbar.text = getString(R.string.some_advices)
+        activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
+        activity!!.right_icon.visibility = View.GONE
+        activity!!.left_icon.visibility = View.VISIBLE
+
+        viewModel = ViewModelProviders.of(this , advicesFactory).get(AdvicesViewModel::class.java)
+
+
+        val query = viewModel.firestore.collection("advices").orderBy("order" , Query.Direction.ASCENDING)
+        val options = FirestoreRecyclerOptions.Builder<Advice>().setQuery(query , Advice::class.java).build()
+        advicesAdapter = AdvicesAdapter(options)
+
+        advices_rec.apply {
+            layoutManager = LinearLayoutManager(this@AdvicesFragment.context)
+            adapter = advicesAdapter
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        advicesAdapter.startListening()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        advicesAdapter.stopListening()
+    }
+
+
+}

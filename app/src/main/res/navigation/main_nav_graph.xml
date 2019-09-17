@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+        app:startDestination="@id/cardsFragment">
+    <fragment android:id="@+id/cardsFragment" android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.CardsFragment"
+            android:label="cards_fragment" tools:layout="@layout/cards_fragment">
+        <action android:id="@+id/go_to_profile"
+                app:destination="@id/profileFragment"
+                app:enterAnim="@android:anim/fade_in"
+                app:exitAnim="@android:anim/fade_out"
+        />
+        <action android:id="@+id/go_to_match_list"
+                app:destination="@id/matchesFragment"
+                app:enterAnim="@android:anim/fade_in"
+                app:exitAnim="@android:anim/fade_out"/>
+    </fragment>
+    <fragment android:id="@+id/profileFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.ProfileFragment"
+            android:label="profile_fragment" tools:layout="@layout/profile_fragment"/>
+    <fragment android:id="@+id/matchesFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.MatchesFragment"
+            android:label="matches_fragment" tools:layout="@layout/matches_fragment">
+        <action android:id="@+id/go_to_show_user" app:destination="@id/showUserFragment"/>
+    </fragment>
+    <fragment android:id="@+id/showUserFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.ShowUserFragment"
+            android:label="show_user_fragment" tools:layout="@layout/show_user_fragment">
+        <argument android:name="id" app:argType="string"/>
+        <action android:id="@+id/go_to_reserve_resturant"
+                app:destination="@id/reserveResturantFragment"/>
+        <action android:id="@+id/go_to_set_the_time" app:destination="@id/pickTimeFragment"/>
+        <action android:id="@+id/go_to_dating_details"
+                app:destination="@id/datingDetailsFragment"/>
+        <action android:id="@+id/go_to_advices" app:destination="@id/advicesFragment"/>
+    </fragment>
+    <fragment android:id="@+id/reserveResturantFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.ReserveResturantFragment"
+            android:label="reserve_resturant_fragment" tools:layout="@layout/reserve_resturant_fragment">
+        <argument android:name="userId" app:argType="string" app:nullable="true"/>
+        <argument android:name="requestId" app:argType="string" app:nullable="true"/>
+    </fragment>
+    <fragment android:id="@+id/pickTimeFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.PickTimeFragment"
+            android:label="pick_time_fragment" tools:layout="@layout/pick_time_fragment">
+        <argument android:name="requestId" app:argType="string" app:nullable="true"/>
+        <argument android:name="userId" app:argType="string"/>
+    </fragment>
+    <fragment android:id="@+id/datingDetailsFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.DatingDetailsFragment"
+            android:label="dating_details_fragment" tools:layout="@layout/dating_details_fragment">
+        <action android:id="@+id/go_to_reset_place"
+                app:destination="@id/reserveResturantFragment"/>
+        <action android:id="@+id/go_to_reset_time"
+                app:destination="@id/pickTimeFragment"/>
+        <argument android:name="requestId" app:argType="string"/>
+    </fragment>
+    <fragment android:id="@+id/advicesFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.AdvicesFragment"
+            android:label="advices_fragment" tools:layout="@layout/advices_fragment"/>
+</navigation>

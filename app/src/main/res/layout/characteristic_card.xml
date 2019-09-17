@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <CheckBox
+                tools:text="الصفة"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:id="@+id/characteristic_title" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.973"
+                android:fontFamily="@font/cairo_regular" android:textSize="18sp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/details" android:visibility="gone"
+                android:background="@color/grey_300">
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/answer_the_character_question"
+                    android:ems="10"
+                    android:background="@drawable/edittext_bordered_rounded"
+                    android:id="@+id/questions_answer"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cairo_regular"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/question"/>
+
+            <TextView
+                    android:text="@string/characteristic_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView" android:textColor="#000"
+                    android:textDirection="rtl"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="16sp" android:fontFamily="@font/cairo_light"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:inputType="numberSigned"
+                    android:ems="10"
+                    android:id="@+id/degree"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="36dp" android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView" app:layout_constraintHorizontal_bias="0.09"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/edittext_bordered_rounded"/>
+            <TextView
+                    tools:text="السؤال الذي ستجيب علية ؟"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/question" android:textColor="#000"
+                    android:fontFamily="@font/cairo_light" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintHorizontal_bias="0.967"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

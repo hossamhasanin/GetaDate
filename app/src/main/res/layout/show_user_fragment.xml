@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Ui.Fragments.MainPage.ShowUserFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                tools:text="الاسم الاول :"
+                android:gravity="start"
+                android:background="@drawable/edittext_bordered_rounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_firstname" android:textSize="14sp"
+                android:fontFamily="@font/cairo_regular" android:textColor="#000"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/username"/>
+        <TextView
+                tools:text="الاسم الثاني :"
+                android:gravity="start"
+                android:background="@drawable/edittext_bordered_rounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_secondname" android:textSize="14sp"
+                android:fontFamily="@font/cairo_regular" android:textColor="#000"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/user_firstname"/>
+        <TextView
+                tools:text="اسم المستخدم :"
+                android:gravity="start"
+                android:background="@drawable/edittext_bordered_rounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/username" android:textSize="14sp"
+                android:fontFamily="@font/cairo_regular" android:textColor="#000"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="28dp"
+                app:layout_constraintTop_toBottomOf="@+id/user_distance" app:layout_constraintHorizontal_bias="0.0"/>
+        <TextView
+                tools:text="يبعد عنك :"
+                android:gravity="start"
+                android:background="@drawable/edittext_bordered_rounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_distance" android:textSize="14sp"
+                android:fontFamily="@font/cairo_regular" android:textColor="#000"
+                app:layout_constraintStart_toEndOf="@+id/profile_image2" android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="48dp"
+                app:layout_constraintTop_toBottomOf="@+id/user_age"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintHorizontal_bias="0.063"
+                android:src="@drawable/male_user_icon"
+                android:id="@+id/profile_image2"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/loading_bar"/>
+        <TextView
+                tools:text="السن :"
+                android:gravity="start"
+                android:background="@drawable/edittext_bordered_rounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/user_age" android:textSize="14sp"
+                android:fontFamily="@font/cairo_regular" android:textColor="#000"
+                app:layout_constraintStart_toEndOf="@+id/profile_image2" android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/loading_bar" android:layout_marginTop="8dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/user_secondname" android:id="@+id/user_charecteristic"/>
+        <TextView
+                tools:text="حالة الطلب : "
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:id="@+id/user_request_state" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/user_charecteristic"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"
+                android:fontFamily="@font/cairo_bold" android:textColor="#4CAF50" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.974"
+                app:layout_constraintVertical_bias="0.0" android:textSize="14sp" android:visibility="gone"/>
+        <Button
+                tools:text="اود الاتقاء !"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_green_box"
+                android:textColor="@android:color/white"
+                android:id="@+id/right_btn" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/user_request_state" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/cairo_bold"
+                android:visibility="gone" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0" android:layout_marginBottom="16dp"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/loading_bar" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent"
+                android:indeterminate="true" android:visibility="gone"/>
+        <Button
+                tools:text="تفاصيل الخروجة"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:background="@drawable/rounded_button_baby_blue"
+                android:id="@+id/left_btn" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/user_request_state"
+                app:layout_constraintEnd_toStartOf="@+id/right_btn" android:layout_marginEnd="8dp"
+                app:layout_constraintHorizontal_bias="0.0" android:fontFamily="@font/cairo_bold"
+                android:visibility="gone" android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
+        <Button
+                tools:text="بعض النصائح"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_bold"
+                android:textColor="@android:color/white"
+                android:background="@drawable/rounded_orange_box"
+                android:id="@+id/advices" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/right_btn" android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:visibility="gone"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

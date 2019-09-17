@@ -1,0 +1,76 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">خروجة حلوة</string>
+    <string name="sub_title_app">تعرف على اناس جدد كل يوم</string>
+    <string name="welcoming_text">خروجة حلوة</string>
+    <string name="enter_your_email">أدخل بريدك الالكتروني ....</string>
+    <string name="email_lable">البريد</string>
+    <string name="password_lable">كلمة السر</string>
+    <string name="enter_your_password">.... أدخل كلمة السر</string>
+    <string name="login_button">دخول</string>
+    <string name="forgot_password">نسيت كلمة السر</string>
+    <string name="sign_up_title">تسجيل حساب</string>
+    <string name="username_lable">اسم المستخدم</string>
+    <string name="already_have_an_account">لديي حساب بالفعل</string>
+    <string name="login_title">تسجيل الدخول</string>
+    <string name="profileSettings_upload_photo">تحميل صورة</string>
+    <string name="profileSettings_first_name">الاسم الاول ....</string>
+    <string name="profileSettings_second_name">الاسم الثاني ....</string>
+    <string name="profileSettings_address">السن ....</string>
+    <string name="profileSettings_save">حفظ</string>
+    <string name="login_done">تم تسجيل الدحول</string>
+    <string name="signup_done">تم تسجيل حساب بنجاح</string>
+    <string name="enter_username">أدخل اسم المستخدم ...</string>
+    <string name="finish_signup">اكمال التسجيل</string>
+    <string name="profileSettings_next">التالي</string>
+    <string name="answer_the_character_question">أجب اجابة تصفك في تلك الصفة</string>
+    <string name="characteristic_score">تقدير من 10 في تلك الصفة :</string>
+    <string name="characteristic">الصفة</string>
+    <string name="loading_the_characteristics">يتم تحميل الصفات</string>
+    <string name="characteristics_not_found">لا توجد صفات محددة لذلك الشخص</string>
+    <string name="no_users_found">لا يوجد أعضاء بعد</string>
+    <string name="no_other_candidates">لا يوجد مرشحين اخرين</string>
+
+
+    <string name="notifications_admin_channel_name">channel_1</string>
+    <string name="notifications_admin_channel_description">admin_channel</string>
+    <string name="main_page">الرئيسية</string>
+    <string name="relocate">اعادة تحديد الموقع</string>
+    <string name="gender_male">الجنس : ذكر</string>
+    <string name="gender_female">الجنس : أنثى</string>
+    <string name="save_done">تم الحفظ بنجاح</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="candidates">المرشحون</string>
+    <string name="candidates_not_found">لا يوجد مرشحون</string>
+    <string name="re_signin">لتغيير الاميل او اسم المستخدم يجب اعادة تسجيل الدخول لضمان امانك</string>
+    <string name="wanna_meet">اود الالتقاء</string>
+    <string name="deleting_request">الغاء</string>
+    <string name="dating_details">تفاصيل الخروجة</string>
+    <string name="not_accepted_yet">الحالة : لم يتم الاتفاق على الخروجة بشكل نهائي</string>
+    <string name="accepted_request">الحالة : تم الاتفاق على الخروجة</string>
+    <string name="no_dating_request">الحالة : لا يوجد طلب لخروجة</string>
+    <string name="parameter_second_name">    الاسم الثاني :<xliff:g id="secondname">%s</xliff:g></string>
+    <string name="parameter_firstname">     الاسم الاول :<xliff:g id="firstname">%s</xliff:g></string>
+    <string name="parameter_username">    اسم المستخدم :<xliff:g id="username">%s</xliff:g></string>
+    <string name="parameter_distance">    يبعد عنك :<xliff:g id="distance">m %s</xliff:g></string>
+    <string name="parameter_age">    السن :<xliff:g id="age">%s</xliff:g></string>
+    <string name="parameter_date">    التاريخ :<xliff:g id="date">%s</xliff:g></string>
+    <string name="parameter_time">    الوقت :<xliff:g id="time">%s</xliff:g></string>
+    <string name="advices_for_the_date">نصائح للخروجة</string>
+    <string name="error_while_choosing_the_place">حدث خطأ اثناء تحديد المكان بالرجاء المحاولة لاحقا</string>
+    <string name="choosed_place_successfiully">تم تحديد المكان بنجاح</string>
+    <string name="open_in_the_map">رؤية على الخريطة</string>
+    <string name="dating_date">تاريخ لخروجة :</string>
+    <string name="pick_dating_time">اختر وقت الخروجة</string>
+    <string name="error">حدث خطأ ما</string>
+    <string name="accepting">قبول الطلب</string>
+    <string name="choose_valid_date_and_time">اختر تاريخ و وقت صحيحين</string>
+    <string name="choose_place">اختر المكان</string>
+    <string name="pick_time">اختر المعاد</string>
+    <string name="dating_time">ميعاد الخروجة</string>
+    <string name="change">تغيير</string>
+    <string name="didnt_accept_yet">لم يتم الاتفاق بعد</string>
+    <string name="not_suitable">ليس مناسب</string>
+    <string name="all_accepted">تم تحديد المعاد</string>
+    <string name="some_advices">بعض النصائح</string>
+
+</resources>

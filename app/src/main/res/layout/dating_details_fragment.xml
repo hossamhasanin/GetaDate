@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".Ui.Fragments.MainPage.DatingDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                tools:text="الحالة : "
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/time_state"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp" android:fontFamily="@font/cairo_bold" android:textSize="14sp"
+                android:textColor="#DF2196F3" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/time" app:layout_constraintStart_toEndOf="@+id/time_action"
+                android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.902"
+                android:visibility="gone"/>
+        <Button
+                tools:text="تغير"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button_baby_blue"
+                android:textColor="@android:color/white"
+                android:id="@+id/time_action" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/cairo_bold"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/time"
+                android:visibility="gone" android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+                tools:text="الوقت : 8:30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/time" android:fontFamily="@font/cairo_regular"
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.917"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/date"/>
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:id="@+id/resturant_image" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+                tools:text="اسم المطعم"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:drawableStart="@drawable/ic_keyboard_arrow_left_24dp"
+                android:id="@+id/resturant_name" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.976"
+                android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/resturant_image"
+                android:textSize="18sp" android:fontFamily="@font/cairo_regular" android:textColor="#000"/>
+        <TextView
+                tools:text="يبعد عنك 5 متر"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/distance" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.976"
+                app:layout_constraintTop_toBottomOf="@+id/resturant_name" android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairo_regular" android:textSize="14sp"/>
+        <TextView
+                tools:text="المنصورة حي الجامعة"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/address"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/distance" android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairo_regular" android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/open_map" android:layout_marginStart="16dp"
+                app:layout_constraintHorizontal_bias="0.868" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp" app:layout_constraintVertical_bias="0.002"/>
+        <Button
+                android:text="@string/open_in_the_map"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_bold"
+                android:drawableStart="@drawable/ic_map_24dp"
+                android:background="@drawable/rounded_button_baby_blue"
+                android:textColor="@android:color/white"
+                android:id="@+id/open_map" app:layout_constraintEnd_toStartOf="@+id/distance"
+                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginTop="28dp"
+                app:layout_constraintTop_toBottomOf="@+id/resturant_name" app:layout_constraintHorizontal_bias="0.071"
+                android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"/>
+        <Button
+                tools:text="تغير"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button_baby_blue"
+                android:textColor="@android:color/white"
+                android:id="@+id/place_action" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/cairo_bold"
+                android:visibility="visible" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/open_map"/>
+        <TextView
+                tools:text="الحالة : "
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/place_state" android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/address" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="12dp" android:fontFamily="@font/cairo_bold" android:textSize="14sp"
+                android:textColor="#DF2196F3" app:layout_constraintStart_toEndOf="@+id/place_action"
+                android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.978"
+                android:visibility="gone"/>
+        <TextView
+                android:text="@string/dating_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:fontFamily="@font/cairo_regular" android:textColor="#000" android:textSize="18sp"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="36dp"
+                app:layout_constraintTop_toBottomOf="@+id/place_state" app:layout_constraintHorizontal_bias="0.977"/>
+        <TextView
+                tools:text="التاريخ : 9-9-2019"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/date" android:fontFamily="@font/cairo_regular"
+                android:textSize="14sp" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.917"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

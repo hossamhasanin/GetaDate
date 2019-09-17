@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Ui.Fragments.ProfileSettings.CharacteristicsFragment">
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            android:id="@+id/characteristics" app:layout_constraintBottom_toTopOf="@+id/saving_charec"
+            android:layout_marginBottom="8dp"/>
+    <Button
+            android:text="@string/profileSettings_save"
+            android:layout_width="0dp"
+            android:drawableLeft="@drawable/ic_save_white_24dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/cairo_regular"
+            android:layout_height="wrap_content"
+            android:id="@+id/save_characteristics" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_button_baby_blue" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/saving_charec"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:indeterminate="true"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/save_characteristics"
+            app:layout_constraintHorizontal_bias="0.0" android:visibility="gone"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

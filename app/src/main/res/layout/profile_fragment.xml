@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Ui.Fragments.MainPage.ProfileFragment">
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/profileSettings_first_name"
+            android:ems="10"
+            android:background="@drawable/edittext_bordered_rounded"
+            android:id="@+id/profile_first_name"
+            android:layout_weight="1"
+            android:fontFamily="@font/cairo_regular"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_email"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_email"
+            android:ems="10"
+            android:background="@drawable/edittext_bordered_rounded"
+            android:id="@+id/profile_email"
+            android:layout_weight="1"
+            android:fontFamily="@font/cairo_regular"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_username"/>
+    <Button
+            android:text="تسجيل الخروج"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/logout" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/cairo_regular" app:layout_constraintStart_toEndOf="@+id/profile_image"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.936"
+            android:background="@drawable/rounded_red_box" android:textColor="#FFF" android:paddingStart="20dp"
+            android:paddingRight="20dp"/>
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_username"
+            android:ems="10"
+            android:background="@drawable/edittext_bordered_rounded"
+            android:id="@+id/profile_username"
+            android:layout_weight="1"
+            android:fontFamily="@font/cairo_regular"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_gender"/>
+
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/profileSettings_second_name"
+            android:ems="10"
+            android:background="@drawable/edittext_bordered_rounded"
+            android:id="@+id/profile_second_name"
+            android:layout_weight="1"
+            android:fontFamily="@font/cairo_regular"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_first_name"/>
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/profileSettings_address"
+            android:ems="10"
+            android:background="@drawable/edittext_bordered_rounded"
+            android:id="@+id/profile_age"
+            android:layout_weight="1"
+            android:fontFamily="@font/cairo_regular"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="14sp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/profile_second_name"/>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.063"
+            android:src="@drawable/male_user_icon"
+            android:id="@+id/profile_image" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+            android:text="@string/profileSettings_save"
+            android:drawableLeft="@drawable/ic_save_white_24dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:id="@+id/profile_save"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintHorizontal_bias="0.493"
+            android:background="@drawable/main_button_box" android:textSize="16sp"
+            android:fontFamily="@font/cairo_regular" android:textColor="#FFF"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_age"
+    />
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar_profile"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:indeterminate="true" android:visibility="gone" app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/profile_save"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
+    <Button
+            android:text="@string/relocate"
+            android:layout_width="0dp"
+            android:layout_height="47dp"
+            android:id="@+id/profile_getlocation"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:fontFamily="@font/cairo_regular" android:background="@drawable/rounded_button_baby_blue"
+            android:textColor="#fff"
+            android:drawableStart="@drawable/ic_location_on_black_24dp"
+            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            android:layout_marginStart="16dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/logout" app:layout_constraintHorizontal_bias="1.0"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_gender" android:textSize="14sp"
+            android:textColor="#000" android:fontFamily="@font/cairo_regular" tools:text="الجنس : ذكر"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image"
+            app:layout_constraintHorizontal_bias="0.975"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

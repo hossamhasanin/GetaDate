@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="MaleMode" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="cardColor">@color/dark_bink</item>
+        <item name="backgroundColor">@color/light_bink</item>
+        <item name="mainTextColor">@color/purpule</item>
+        <item name="startColor">@color/purpule</item>
+        <item name="endColor">@color/baby_blue</item>
+        <item name="statusBarColor">@color/purpule</item>
+
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">?attr/statusBarColor</item>
+        <item name="colorAccent">?attr/statusBarColor</item>
+
+    </style>
+
+    <style name="FeMaleMode" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="cardColor">@color/purpule</item>
+        <item name="backgroundColor">@color/light_purpule</item>
+        <item name="mainTextColor">@color/dark_bink</item>
+        <item name="startColor">@color/dark_bink</item>
+        <item name="endColor">@color/light_bink</item>
+        <item name="statusBarColor">@color/dark_bink</item>
+
+        <item name="colorPrimary">@color/light_bink</item>
+        <item name="colorPrimaryDark">?attr/statusBarColor</item>
+        <item name="colorAccent">?attr/statusBarColor</item>
+    </style>
+
+
+
+</resources>
