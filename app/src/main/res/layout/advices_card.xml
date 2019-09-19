@@ -8,6 +8,6 @@
     <TextView
             tools:text="النصيحة الاولى"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/d" android:fontFamily="@font/cairo_regular"
+            android:layout_height="wrap_content" android:id="@+id/advices" android:fontFamily="@font/cairo_regular"
             android:textColor="#000" android:textSize="14sp" android:gravity="start" android:padding="10dp"/>
 </androidx.cardview.widget.CardView>

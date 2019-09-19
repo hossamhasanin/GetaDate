@@ -29,12 +29,12 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/user_card_validaty" android:layout_marginTop="8dp"
                     android:background="?attr/backgroundColor"
                     android:id="@+id/user_characteristics"
                     android:visibility="gone"
                     android:paddingStart="10dp"
-                    android:paddingLeft="10dp"/>
+                    android:paddingLeft="10dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/user_card_username"/>
             <TextView
                     android:text="اسم المستخدم"
                     android:layout_width="wrap_content"
@@ -51,9 +51,9 @@
                     android:id="@+id/user_card_validaty" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp" android:layout_marginTop="8dp"
                     app:layout_constraintTop_toTopOf="parent" android:textColor="#4CAF50"
-                    android:fontFamily="@font/cairo_regular"/>
+                    android:fontFamily="@font/cairo_regular" android:visibility="gone"/>
             <TextView
-                    tools:text="@string/loading_the_characteristics"
+                    android:text="@string/loading_the_characteristics"
                     android:textColor="@android:color/black"
                     android:fontFamily="@font/cairo_regular"
                     android:textSize="16sp"

@@ -32,6 +32,7 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
+import java.lang.IllegalStateException
 
 class CardsFragment : BaseFragment() , KodeinAware{
 
@@ -167,9 +168,6 @@ class CardsFragment : BaseFragment() , KodeinAware{
 
             Log.v("koko" , userCharacteristics.toString())
 
-            alert_mess.visibility = View.GONE
-            user_characteristics.visibility = View.VISIBLE
-
             val characteristicItems = userCharacteristics.convertToListItems()
 
             val groupAdapter = GroupAdapter<ViewHolder>().apply {
@@ -191,6 +189,9 @@ class CardsFragment : BaseFragment() , KodeinAware{
                 }
             }
 
+            alert_mess.visibility = View.GONE
+            user_characteristics.visibility = View.VISIBLE
+
         } else {
             showAlertMess(getString(R.string.characteristics_not_found))
         }
@@ -208,12 +209,15 @@ class CardsFragment : BaseFragment() , KodeinAware{
     }
 
     private fun showAlertMess(mess: String){
-        alert_mess.visibility = View.VISIBLE
-        user_characteristics.visibility = View.GONE
-        user_card_validaty.visibility = View.GONE
-        user_card_username.visibility = View.GONE
-        pro.visibility = View.GONE
-        alert_mess.text = mess
+        try {
+            alert_mess.visibility = View.VISIBLE
+            user_characteristics.visibility = View.GONE
+            user_card_validaty.visibility = View.GONE
+            user_card_username.visibility = View.GONE
+            pro.visibility = View.GONE
+            alert_mess.text = mess
+        } catch (e:IllegalStateException){}
+
     }
 
 }

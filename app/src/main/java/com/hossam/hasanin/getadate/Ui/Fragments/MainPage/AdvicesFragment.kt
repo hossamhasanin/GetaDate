@@ -9,22 +9,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
+import com.hossam.hasanin.getadate.Externals.getGender
 import com.hossam.hasanin.getadate.Models.Advice
 
 import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.Ui.Adapter.AdvicesAdapter
+import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
 import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.AdvicesFactory
 import com.hossam.hasanin.getadate.ViewModels.MainPage.AdvicesViewModel
 import kotlinx.android.synthetic.main.advices_fragment.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 
-class AdvicesFragment : Fragment() , KodeinAware {
+class AdvicesFragment : BaseFragment() , KodeinAware {
 
     private lateinit var viewModel: AdvicesViewModel
 
@@ -32,7 +35,7 @@ class AdvicesFragment : Fragment() , KodeinAware {
 
     private val advicesFactory:AdvicesFactory by instance()
 
-    private lateinit var advicesAdapter:AdvicesAdapter
+    private var advicesAdapter:AdvicesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,8 +54,13 @@ class AdvicesFragment : Fragment() , KodeinAware {
 
         viewModel = ViewModelProviders.of(this , advicesFactory).get(AdvicesViewModel::class.java)
 
+        bindRec()
 
-        val query = viewModel.firestore.collection("advices").orderBy("order" , Query.Direction.ASCENDING)
+
+    }
+
+    private fun bindRec() = launch {
+        val query = viewModel.firestore.collection("advices").whereEqualTo("gender" , viewModel.mAuth.currentUser!!.getGender()).orderBy("order")
         val options = FirestoreRecyclerOptions.Builder<Advice>().setQuery(query , Advice::class.java).build()
         advicesAdapter = AdvicesAdapter(options)
 
@@ -61,16 +69,22 @@ class AdvicesFragment : Fragment() , KodeinAware {
             adapter = advicesAdapter
         }
 
+        advicesAdapter?.startListening()
+
     }
 
-    override fun onStart() {
-        super.onStart()
-        advicesAdapter.startListening()
+    override fun onResume() {
+        super.onResume()
+        if (advicesAdapter != null) {
+            advicesAdapter?.startListening()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        advicesAdapter.stopListening()
+        if (advicesAdapter != null) {
+            advicesAdapter?.stopListening()
+        }
     }
 
 

@@ -53,6 +53,9 @@ class MainInformationsViewModel : ViewModel() {
         if (user.secondName?.trim().equals("")){
             errorList.add(ErrorTypes.SECONDNAME_ERROR)
         }
+        if (user.address?.trim().equals("")){
+            errorList.add(ErrorTypes.ADDRESS_ERROR)
+        }
         if (user.age!! == null && user.age!! < 10 && user.age!! > 100){
             errorList.add(ErrorTypes.AGE_ERROR)
         }

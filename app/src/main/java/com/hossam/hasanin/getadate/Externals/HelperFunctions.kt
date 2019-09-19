@@ -55,6 +55,14 @@ suspend fun FirebaseUser.getSecondName() : String? {
     return user!!.secondName
 }
 
+suspend fun FirebaseUser.getAddress() : String? {
+    val firestore = FirebaseFirestore.getInstance()
+    val data = firestore.collection("users").document(this@getAddress.uid).get().asDeferred().await()
+    val user = data.toObject(User::class.java)
+    return user!!.address
+}
+
+
 suspend fun FirebaseUser.getAge() : Int? {
     val firestore = FirebaseFirestore.getInstance()
     val data = firestore.collection("users").document(this@getAge.uid).get().asDeferred().await()

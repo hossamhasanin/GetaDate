@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.text.isDigitsOnly
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +20,9 @@ import kotlinx.android.synthetic.main.characteristic_card.view.*
 
 class CharacteristicsAdapter(options: FirestoreRecyclerOptions<Characteristic?>) : FirestoreRecyclerAdapter<Characteristic , CharacteristicsAdapter.Companion.viewHolder>(options) {
 
-    val finalData = HashMap<String , UserCharacteristic>()
-    val c = ArrayList<Int>()
+    var finalData = HashMap<String , UserCharacteristic?>()
+
+    var deleted = HashMap<String , UserCharacteristic?>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.characteristic_card , parent , false)
@@ -30,6 +32,13 @@ class CharacteristicsAdapter(options: FirestoreRecyclerOptions<Characteristic?>)
     override fun onBindViewHolder(holder: viewHolder, position: Int, characteristic: Characteristic) {
         holder.characteristicTitle.text = characteristic.title
         holder.characteristicQuestion.text = characteristic.question
+
+        if (finalData.contains(characteristic.id)){
+            holder.characteristicTitle.isChecked = true
+            holder.details.visibility = View.VISIBLE
+            holder.questionsAnswer.setText(finalData[characteristic.id]?.answer)
+            holder.characteristicDegree.setText(finalData[characteristic.id]!!.degree!!.toString())
+        }
 
         holder.questionsAnswer.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
@@ -73,6 +82,7 @@ class CharacteristicsAdapter(options: FirestoreRecyclerOptions<Characteristic?>)
             } else {
                 holder.details.visibility = View.GONE
                 if (finalData.contains(characteristic.id)){
+                    deleted[characteristic.id] = finalData[characteristic.id]
                     finalData.remove(characteristic.id)
                 }
             }

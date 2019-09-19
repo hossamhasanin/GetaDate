@@ -72,5 +72,7 @@
     <string name="not_suitable">ليس مناسب</string>
     <string name="all_accepted">تم تحديد المعاد</string>
     <string name="some_advices">بعض النصائح</string>
+    <string name="address">العنوان ...</string>
+    <string name="edit_characteristics">تعديل الصفات</string>
 
 </resources>

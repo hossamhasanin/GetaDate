@@ -16,6 +16,7 @@ object Constants{
         ERROR_MESSAGES.put(ErrorTypes.LOCATION_MISSING , "يجب تحديد الموقع الجغرافي")
         ERROR_MESSAGES.put(ErrorTypes.FIREBASE_SERVER_ERROR , "خطأ في السرفر برجاء اعادة المحاولة بعد لحظات")
         ERROR_MESSAGES.put(ErrorTypes.WRONG_EMAIL_OR_PASSWORD , "تحقق من الاميل و كلمة المرور")
+        ERROR_MESSAGES.put(ErrorTypes.ADDRESS_ERROR , "يجب ان تصف عنوانك")
 
         return ERROR_MESSAGES
     }

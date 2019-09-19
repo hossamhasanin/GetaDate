@@ -3,7 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" android:layout_marginTop="10dp">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -17,9 +17,10 @@
                 android:textAlignment="textStart"
                 android:id="@+id/characteristic_title" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp" android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.973"
-                android:fontFamily="@font/cairo_regular" android:textSize="18sp"/>
+                android:fontFamily="@font/cairo_regular" android:textSize="18sp" android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -53,7 +54,7 @@
                     android:textSize="16sp" android:fontFamily="@font/cairo_light"
                     android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
             <EditText
-                    android:layout_width="45dp"
+                    android:layout_width="60dp"
                     android:layout_height="45dp"
                     android:inputType="numberSigned"
                     android:ems="10"
@@ -62,7 +63,7 @@
                     android:layout_marginStart="36dp" android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toStartOf="@+id/textView" app:layout_constraintHorizontal_bias="0.09"
                     android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/edittext_bordered_rounded"/>
+                    android:background="@drawable/edittext_bordered_rounded" android:gravity="center"/>
             <TextView
                     tools:text="السؤال الذي ستجيب علية ؟"
                     android:layout_width="wrap_content"

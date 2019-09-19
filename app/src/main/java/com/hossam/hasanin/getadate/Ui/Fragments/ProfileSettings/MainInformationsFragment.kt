@@ -67,7 +67,8 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
         viewModel.dataSaved.observe(this , Observer { saved ->
             if (saved){
                 Toast.makeText(activity , "تم الحفظ بنجاح" , Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.go_to_characteristics)
+                val action = MainInformationsFragmentDirections.goToCharacteristics(true)
+                findNavController().navigate(action)
             } else {
                 profile_save.isClickable = true
                 showTheErrors(activity!!.applicationContext , viewModel.errorList , viewModel.ERROR_MESSAGES)
@@ -124,9 +125,10 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
     fun saveUserDataInFireStore() = launch(Dispatchers.IO) {
         val firstName = profile_first_name.text.toString()
         val secondName = profile_second_name.text.toString()
+        val address = profile_address.text.toString()
         val age = if (profile_age.text.toString().isNotEmpty()) profile_age.text.toString().toInt() else -1
         val location = arrayListOf(LocationHandeler.mlocation?.longitude , LocationHandeler.mlocation?.latitude)
-        val user = User(firstName = firstName , secondName = secondName , age = age , gender = gender , location = location)
+        val user = User(firstName = firstName , secondName = secondName , age = age , gender = gender , location = location , address = address)
 
         viewModel.saveUserData(user)
     }

@@ -1,5 +1,6 @@
 package com.hossam.hasanin.getadate.Ui.Fragments.MainPage
 
+import android.app.AlertDialog
 import android.location.Location
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
@@ -127,6 +129,13 @@ class ShowUserFragment : BaseFragment() , KodeinAware {
             }
             adapter = groupAdapter
         }
+
+        groupAdapter.setOnItemClickListener { item, view ->
+            (item as? CardItem)?.let {
+                showCharacteristicDetails(it.characteristic)
+            }
+        }
+
     }
 
     private fun bindDatingRequest(datingRequest: DatingRequest?){
@@ -221,6 +230,20 @@ class ShowUserFragment : BaseFragment() , KodeinAware {
             ShowUserFragmentDirections.goToSetTheTime(requestId , id!!)
         }
         Navigation.findNavController(view).navigate(action)
+    }
+
+    private fun showCharacteristicDetails(userCharacteristic: UserCharacteristic){
+        val layout = layoutInflater.inflate(R.layout.view_characteristic_card , null)
+        val dialog = AlertDialog.Builder(activity)
+        dialog.setView(layout)
+
+        val question = layout.findViewById<TextView>(R.id.question)
+        val answer = layout.findViewById<TextView>(R.id.answer)
+
+        question.text = userCharacteristic.question
+        answer.text = userCharacteristic.answer
+
+        dialog.create().show()
     }
 
 //    if (datingRequest != null){

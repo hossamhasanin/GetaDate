@@ -17,7 +17,10 @@
     </fragment>
     <fragment android:id="@+id/profileFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.ProfileFragment"
-            android:label="profile_fragment" tools:layout="@layout/profile_fragment"/>
+            android:label="profile_fragment" tools:layout="@layout/profile_fragment">
+        <action android:id="@+id/edit_characteristics"
+                app:destination="@id/characteristicsFragment2"/>
+    </fragment>
     <fragment android:id="@+id/matchesFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.MatchesFragment"
             android:label="matches_fragment" tools:layout="@layout/matches_fragment">
@@ -58,4 +61,9 @@
     <fragment android:id="@+id/advicesFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.AdvicesFragment"
             android:label="advices_fragment" tools:layout="@layout/advices_fragment"/>
+    <fragment android:id="@+id/characteristicsFragment2"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.ProfileSettings.CharacteristicsFragment"
+            android:label="characteristics_fragment" tools:layout="@layout/characteristics_fragment">
+        <argument android:name="isNew" app:argType="boolean"/>
+    </fragment>
 </navigation>

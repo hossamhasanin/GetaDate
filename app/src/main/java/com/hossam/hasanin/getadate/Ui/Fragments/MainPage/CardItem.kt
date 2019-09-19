@@ -6,7 +6,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.user_card.*
 
-class CardItem(private val characteristic: UserCharacteristic) : Item() {
+class CardItem(val characteristic: UserCharacteristic) : Item() {
     override fun getLayout() = R.layout.user_card
 
     override fun bind(viewHolder: ViewHolder, position: Int) {

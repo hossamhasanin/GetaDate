@@ -12,5 +12,7 @@
     </fragment>
     <fragment android:id="@+id/characteristicsFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.ProfileSettings.CharacteristicsFragment"
-            android:label="characteristics_fragment" tools:layout="@layout/characteristics_fragment"/>
+            android:label="characteristics_fragment" tools:layout="@layout/characteristics_fragment">
+        <argument android:name="isNew" app:argType="boolean"/>
+    </fragment>
 </navigation>

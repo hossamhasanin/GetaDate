@@ -17,10 +17,19 @@
                 android:id="@+id/match_username" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp" app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="24dp" app:layout_constraintHorizontal_bias="0.0" android:textSize="14sp"
-                android:textColor="#000" android:fontFamily="@font/cairo_semibold" android:layout_marginBottom="24dp"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.007"
+                android:layout_marginTop="16dp" app:layout_constraintHorizontal_bias="0.0" android:textSize="14sp"
+                android:textColor="#000" android:fontFamily="@font/cairo_semibold"
                 tools:text="Usernae"/>
+        <TextView
+                tools:text="الحالة"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/status" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/match_username"
+                android:layout_marginTop="8dp" android:fontFamily="@font/cairo_regular" android:gravity="start"
+                android:textSize="12sp" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

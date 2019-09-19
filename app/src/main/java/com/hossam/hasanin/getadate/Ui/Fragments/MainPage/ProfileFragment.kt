@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import com.hossam.hasanin.getadate.Externals.*
 import com.hossam.hasanin.getadate.Models.User
 
@@ -95,6 +96,11 @@ class ProfileFragment : BaseFragment() , KodeinAware {
             }
         }
 
+        edit_characteristics.setOnClickListener {
+            val action = ProfileFragmentDirections.editCharacteristics(false)
+            Navigation.findNavController(it).navigate(action)
+        }
+
         profile_save.setOnClickListener {
             progressBar_profile.visibility = View.VISIBLE
             profile_save.isClickable = false
@@ -143,17 +149,20 @@ class ProfileFragment : BaseFragment() , KodeinAware {
         profile_second_name.setText(secondName)
         val age = viewModel.currentUser!!.getAge()
         profile_age.setText(age.toString())
+        val getAddress = viewModel.currentUser!!.getAddress()
+        address.setText(getAddress)
 
         locationMetric = viewModel.currentUser!!.getLocation()
 
     }
 
-    private fun upSertUserData(){
-        val username = profile_username.text.toString()
-        val email = profile_email.text.toString()
-        val firstName = profile_first_name.text.toString()
-        val secondName = profile_second_name.text.toString()
-        val age = profile_age.text.toString().toInt()
+    private fun upSertUserData() = launch {
+        val username = if (profile_username.text.toString().trim().equals("")) viewModel.currentUser!!.displayName else profile_username.text.toString()
+        val email = if (profile_email.text.toString().trim().equals("")) viewModel.currentUser!!.email else profile_email.text.toString()
+        val firstName = if (profile_first_name.text.toString().trim().equals("")) viewModel.currentUser!!.getFirstName() else profile_first_name.text.toString()
+        val secondName = if (profile_second_name.text.toString().trim().equals("")) viewModel.currentUser!!.getSecondName() else profile_second_name.text.toString()
+        val address = if (address.text.toString().trim().equals("")) viewModel.currentUser!!.getAddress() else address.text.toString()
+        val age = if (!profile_age.text.toString().trim().equals("") || profile_age.text.toString().toInt() in 101 downTo 9) profile_age.text.toString().toInt() else viewModel.currentUser!!.getAge()
         val gender = if (profile_gender.text == getString(R.string.gender_male)) 1 else 0
         if (LocationHandeler.mlocation != null){
             locationMetric = arrayListOf(LocationHandeler.mlocation!!.longitude , LocationHandeler.mlocation!!.latitude)
@@ -167,8 +176,9 @@ class ProfileFragment : BaseFragment() , KodeinAware {
             secondName = secondName,
             age = age,
             gender = gender,
-            location = locationMetric)
-        viewModel.upSertUserData(user , this.activity!!){
+            location = locationMetric,
+            address = address)
+        viewModel.upSertUserData(user , this@ProfileFragment.activity!!){
 
             if (it != null){
                 if (it.isSuccessful){

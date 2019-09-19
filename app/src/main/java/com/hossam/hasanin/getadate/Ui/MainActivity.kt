@@ -83,5 +83,5 @@ class MainActivity : AppCompatActivity() {
 
 enum class MainPages{
     CARDS , PROFILE , MATCHES , SHOW_USER , RESERVE_RESTURANT
-    , PICK_TIME , DETAILS , ADVICES
+    , PICK_TIME , DETAILS , ADVICES , EDIT_CHARACTERISTICS
 }

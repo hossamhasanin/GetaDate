@@ -25,4 +25,5 @@ data class UserCharacteristic(
             "timestamp" to timestamp
         )
     }
+
 }
