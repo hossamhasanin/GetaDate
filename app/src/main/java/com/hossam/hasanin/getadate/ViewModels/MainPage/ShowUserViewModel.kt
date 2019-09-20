@@ -22,13 +22,14 @@ class ShowUserViewModel : ViewModel() {
 
     fun getUseBasicInfo(id:String){
         firestore.collection("users").document(id).addSnapshotListener{documentSnapshot, firebaseFirestoreException ->
-            if (documentSnapshot!!.exists()){
-                val user = documentSnapshot.toObject(User::class.java)
-                getUser.postValue(user)
-            } else {
-                throw NotFoundUserException()
+            if (documentSnapshot != null){
+                if (documentSnapshot.exists()){
+                    val user = documentSnapshot.toObject(User::class.java)
+                    getUser.postValue(user)
+                } else {
+                    throw NotFoundUserException()
+                }
             }
-
         }
     }
 

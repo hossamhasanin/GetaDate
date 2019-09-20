@@ -95,14 +95,21 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
                 } else {
                     locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER , locationListener , looper)
                     //Log.d("koko", "here")
-                    Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
                 }
             } else {
                 locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER , locationListener , looper)
-                Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
             }
 
         }
+
+        LocationHandeler.gpsIsDisabled.observe(this , Observer {isDisabled ->
+            if (isDisabled){
+                Toast.makeText(activity!!.applicationContext , "يجب فتح ال gps لتحديد الموقع" , Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
+            }
+        })
+
 
     }
 
@@ -115,7 +122,6 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
                 locationManager.requestSingleUpdate(
                     LocationManager.GPS_PROVIDER ,
                     locationListener, looper)
-                Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity!!.applicationContext , "يجب تحديد الموقع لاكمال عملية التسجيل" , Toast.LENGTH_LONG).show()
             }

@@ -17,7 +17,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.hossam.hasanin.getadate.Externals.*
 import com.hossam.hasanin.getadate.Models.User
 
@@ -86,13 +88,11 @@ class ProfileFragment : BaseFragment() , KodeinAware {
                     locationManager.requestSingleUpdate(
                         LocationManager.GPS_PROVIDER ,
                         LocationHandeler.locationListener, looper)
-                    Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
                 }
             } else {
                 locationManager.requestSingleUpdate(
                     LocationManager.GPS_PROVIDER ,
                     LocationHandeler.locationListener, looper)
-                Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
             }
         }
 
@@ -107,6 +107,14 @@ class ProfileFragment : BaseFragment() , KodeinAware {
             upSertUserData()
         }
 
+        LocationHandeler.gpsIsDisabled.observe(this , Observer {isDisabled ->
+            if (isDisabled){
+                Toast.makeText(activity!!.applicationContext , "يجب فتح ال gps لتحديد الموقع" , Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
+            }
+        })
+
     }
 
     @SuppressLint("MissingPermission")
@@ -117,7 +125,6 @@ class ProfileFragment : BaseFragment() , KodeinAware {
                 locationManager.requestSingleUpdate(
                     LocationManager.GPS_PROVIDER ,
                     LocationHandeler.locationListener, looper)
-                Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity!!.applicationContext , "يجب تحديد الموقع لاكمال عملية التسجيل" , Toast.LENGTH_LONG).show()
             }

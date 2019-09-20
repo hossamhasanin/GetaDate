@@ -17,14 +17,16 @@ class DatingDetailsViewModel : ViewModel() {
     fun getRequestDetails(requestId: String){
         firestore.collection("datingRequests")
             .document(requestId).addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
-                if (documentSnapshot!!.exists()){
-                    val resturantId = documentSnapshot.data?.getOrElse("place" , {null}) as String
-                    getPlaceInfo(resturantId)
-                    val request = documentSnapshot.toObject(DatingRequest::class.java)
-                    request!!.withId(documentSnapshot.id)
-                    requestListener.postValue(request)
-                } else {
-                    requestListener.postValue(null)
+                if (documentSnapshot != null){
+                    if (documentSnapshot!!.exists()){
+                        val resturantId = documentSnapshot.data?.getOrElse("place" , {null}) as String
+                        getPlaceInfo(resturantId)
+                        val request = documentSnapshot.toObject(DatingRequest::class.java)
+                        request!!.withId(documentSnapshot.id)
+                        requestListener.postValue(request)
+                    } else {
+                        requestListener.postValue(null)
+                    }
                 }
             }
     }
