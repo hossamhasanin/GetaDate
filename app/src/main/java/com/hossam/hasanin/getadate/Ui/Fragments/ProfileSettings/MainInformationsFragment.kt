@@ -61,7 +61,11 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
         profile_save.setOnClickListener {
             progressBar_profile.visibility = View.VISIBLE
             profile_save.isClickable = false
-            saveUserDataInFireStore()
+            if (LocationHandeler.mlocation.value != null){
+                saveUserDataInFireStore()
+            } else {
+                Toast.makeText(activity!!.applicationContext , "انتظر تحديد الموقع" , Toast.LENGTH_LONG).show()
+            }
         }
 
         viewModel.dataSaved.observe(this , Observer { saved ->
@@ -71,6 +75,7 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
                 findNavController().navigate(action)
             } else {
                 profile_save.isClickable = true
+                progressBar_profile.visibility = View.GONE
                 showTheErrors(activity!!.applicationContext , viewModel.errorList , viewModel.ERROR_MESSAGES)
             }
         })
@@ -93,19 +98,21 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
                         arrayOf<String?>(permission.ACCESS_FINE_LOCATION),
                         Constants.LOCATION_REQUEST_CODE)
                 } else {
-                    locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER , locationListener , looper)
+                    locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER , locationListener , looper)
                     //Log.d("koko", "here")
+                    profile_save.isClickable = false
+                    Toast.makeText(activity!!.applicationContext , "انتظر حتى يتم تحديد الموقع" , Toast.LENGTH_LONG).show()
                 }
             } else {
-                locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER , locationListener , looper)
+                locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER , locationListener , looper)
+                Toast.makeText(activity!!.applicationContext , "انتظر حتى يتم تحديد الموقع" , Toast.LENGTH_LONG).show()
             }
 
         }
 
-        LocationHandeler.gpsIsDisabled.observe(this , Observer {isDisabled ->
-            if (isDisabled){
-                Toast.makeText(activity!!.applicationContext , "يجب فتح ال gps لتحديد الموقع" , Toast.LENGTH_LONG).show()
-            } else {
+        LocationHandeler.mlocation.observe(this , Observer {location ->
+            if (location != null){
+                profile_save.isClickable = true
                 Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
             }
         })
@@ -120,8 +127,9 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
         if (requestCode == Constants.LOCATION_REQUEST_CODE){
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 locationManager.requestSingleUpdate(
-                    LocationManager.GPS_PROVIDER ,
+                    LocationManager.NETWORK_PROVIDER ,
                     locationListener, looper)
+                Toast.makeText(activity!!.applicationContext , "انتظر حتى يتم تحديد الموقع" , Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(activity!!.applicationContext , "يجب تحديد الموقع لاكمال عملية التسجيل" , Toast.LENGTH_LONG).show()
             }
@@ -133,7 +141,7 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
         val secondName = profile_second_name.text.toString()
         val address = profile_address.text.toString()
         val age = if (profile_age.text.toString().isNotEmpty()) profile_age.text.toString().toInt() else -1
-        val location = arrayListOf(LocationHandeler.mlocation?.longitude , LocationHandeler.mlocation?.latitude)
+        val location = arrayListOf(LocationHandeler.mlocation.value?.longitude , LocationHandeler.mlocation.value?.latitude)
         val user = User(firstName = firstName , secondName = secondName , age = age , gender = gender , location = location , address = address)
 
         viewModel.saveUserData(user)

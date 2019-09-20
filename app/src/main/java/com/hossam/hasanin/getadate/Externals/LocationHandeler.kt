@@ -11,11 +11,11 @@ import androidx.lifecycle.MutableLiveData
 
 object LocationHandeler {
 
-    var mlocation: Location? = null
+    var mlocation = MutableLiveData<Location?>()
     var gpsIsDisabled = MutableLiveData<Boolean>()
     val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-            mlocation = location
+            mlocation.postValue(location)
             Log.d("Location Changes", location.toString())
         }
 

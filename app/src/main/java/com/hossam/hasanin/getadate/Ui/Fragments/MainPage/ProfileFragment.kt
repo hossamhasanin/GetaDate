@@ -86,13 +86,15 @@ class ProfileFragment : BaseFragment() , KodeinAware {
                         Constants.LOCATION_REQUEST_CODE)
                 } else {
                     locationManager.requestSingleUpdate(
-                        LocationManager.GPS_PROVIDER ,
+                        LocationManager.NETWORK_PROVIDER ,
                         LocationHandeler.locationListener, looper)
+                    Toast.makeText(activity!!.applicationContext , "انتظر حتى يتم تحديد الموقع" , Toast.LENGTH_LONG).show()
                 }
             } else {
                 locationManager.requestSingleUpdate(
-                    LocationManager.GPS_PROVIDER ,
+                    LocationManager.NETWORK_PROVIDER ,
                     LocationHandeler.locationListener, looper)
+                Toast.makeText(activity!!.applicationContext , "انتظر حتى يتم تحديد الموقع" , Toast.LENGTH_LONG).show()
             }
         }
 
@@ -107,10 +109,8 @@ class ProfileFragment : BaseFragment() , KodeinAware {
             upSertUserData()
         }
 
-        LocationHandeler.gpsIsDisabled.observe(this , Observer {isDisabled ->
-            if (isDisabled){
-                Toast.makeText(activity!!.applicationContext , "يجب فتح ال gps لتحديد الموقع" , Toast.LENGTH_LONG).show()
-            } else {
+        LocationHandeler.mlocation.observe(this , Observer {location ->
+            if (location != null){
                 Toast.makeText(activity!!.applicationContext , "تم تحديد الموقع" , Toast.LENGTH_LONG).show()
             }
         })
@@ -123,7 +123,7 @@ class ProfileFragment : BaseFragment() , KodeinAware {
         if (requestCode == Constants.LOCATION_REQUEST_CODE){
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 locationManager.requestSingleUpdate(
-                    LocationManager.GPS_PROVIDER ,
+                    LocationManager.NETWORK_PROVIDER ,
                     LocationHandeler.locationListener, looper)
             } else {
                 Toast.makeText(activity!!.applicationContext , "يجب تحديد الموقع لاكمال عملية التسجيل" , Toast.LENGTH_LONG).show()
@@ -132,7 +132,7 @@ class ProfileFragment : BaseFragment() , KodeinAware {
     }
 
     private fun bindUi() = launch {
-        LocationHandeler.mlocation = null
+        LocationHandeler.mlocation.value = null
 
         val gender:String
         val genderImage: Int
@@ -171,8 +171,8 @@ class ProfileFragment : BaseFragment() , KodeinAware {
         val address = if (address.text.toString().trim().equals("")) viewModel.currentUser!!.getAddress() else address.text.toString()
         val age = if (!profile_age.text.toString().trim().equals("") || profile_age.text.toString().toInt() in 101 downTo 9) profile_age.text.toString().toInt() else viewModel.currentUser!!.getAge()
         val gender = if (profile_gender.text == getString(R.string.gender_male)) 1 else 0
-        if (LocationHandeler.mlocation != null){
-            locationMetric = arrayListOf(LocationHandeler.mlocation!!.longitude , LocationHandeler.mlocation!!.latitude)
+        if (LocationHandeler.mlocation.value != null){
+            locationMetric = arrayListOf(LocationHandeler.mlocation.value!!.longitude , LocationHandeler.mlocation.value!!.latitude)
         }
 
         val user = User(

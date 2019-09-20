@@ -102,17 +102,4 @@ class mFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
-    override fun onNewToken(token: String) {
-        super.onNewToken(token)
-
-        saveUserToken(token)
-    }
-
-    private fun saveUserToken(token: String){
-        val firestore = FirebaseFirestore.getInstance()
-        val mAuth = FirebaseAuth.getInstance()
-        firestore.collection("users").document(mAuth.currentUser!!.uid)
-            .update("token_id" , token)
-    }
-
 }

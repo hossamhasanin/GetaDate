@@ -14,6 +14,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">?attr/statusBarColor</item>
         <item name="colorAccent">?attr/statusBarColor</item>
+        <item name="android:layoutDirection">ltr</item>
 
     </style>
 
@@ -29,6 +30,7 @@
         <item name="colorPrimary">@color/light_bink</item>
         <item name="colorPrimaryDark">?attr/statusBarColor</item>
         <item name="colorAccent">?attr/statusBarColor</item>
+        <item name="android:layoutDirection">ltr</item>
     </style>
 
 
