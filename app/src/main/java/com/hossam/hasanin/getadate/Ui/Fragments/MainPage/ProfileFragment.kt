@@ -25,6 +25,7 @@ import com.hossam.hasanin.getadate.Models.User
 
 import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
+import com.hossam.hasanin.getadate.Ui.Fragments.BaseMainPageFragment
 import com.hossam.hasanin.getadate.Ui.LoginActivity
 import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
@@ -37,7 +38,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 
-class ProfileFragment : BaseFragment() , KodeinAware {
+class ProfileFragment : BaseMainPageFragment() , KodeinAware {
 
     override val kodein by closestKodein()
 
@@ -107,6 +108,11 @@ class ProfileFragment : BaseFragment() , KodeinAware {
             progressBar_profile.visibility = View.VISIBLE
             profile_save.isClickable = false
             upSertUserData()
+        }
+
+        add_more_questions.setOnClickListener {
+            val action = ProfileFragmentDirections.goToEnhancePersonalitFragment()
+            Navigation.findNavController(it).navigate(action)
         }
 
         LocationHandeler.mlocation.observe(this , Observer {location ->

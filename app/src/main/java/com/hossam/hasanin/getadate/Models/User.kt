@@ -17,6 +17,7 @@ data class User(
     var age: Int? = null,
     var online: Boolean? = false,
     var gender: Int? = 1,
+    var personalityRate: Double? = 0.0,
     var location: ArrayList<Double?>? = null,
     @ServerTimestamp
     val timestamp: Date? = null
@@ -32,6 +33,7 @@ data class User(
             "age" to age,
             "online" to online,
             "gender" to gender,
+            "personalityRate" to personalityRate,
             "location" to location,
             "timestamp" to timestamp
         )

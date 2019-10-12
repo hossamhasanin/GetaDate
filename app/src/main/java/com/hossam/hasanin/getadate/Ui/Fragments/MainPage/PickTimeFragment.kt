@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.hossam.hasanin.getadate.R
+import com.hossam.hasanin.getadate.Ui.Fragments.BaseMainPageFragment
 import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.PickTimeFactory
@@ -27,7 +28,7 @@ import java.util.*
 import kotlin.time.ExperimentalTime
 
 
-class PickTimeFragment : Fragment() , KodeinAware{
+class PickTimeFragment : BaseMainPageFragment() , KodeinAware{
 
     private lateinit var viewModel: PickTimeViewModel
 

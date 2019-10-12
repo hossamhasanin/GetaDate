@@ -1,29 +1,35 @@
 package com.hossam.hasanin.getadate.Models
 
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ServerTimestamp
 import java.util.*
 import kotlin.collections.HashMap
 
 data class UserCharacteristic(
-    var title: String?,
-    var question: String?,
+    override var title: String?,
     var degree: Int?,
-    var answer: String? ,
+    override var order: Int?,
     @ServerTimestamp
-    val timestamp: Date? = null
-) {
+    var timestamp: Date? = null
+) : CharacteristicsInterface {
 
-    constructor():this("" , "" , null , "")
+    constructor(): this("" , null , null)
+
+    private var id:String? = null
+
+    fun getId() : String?{
+        return this.id
+    }
+
+    fun withId(id : String){
+        this.id = id
+    }
 
     fun toHashmap() : HashMap<String , Any?>{
         return hashMapOf(
             "title" to title ,
-            "question" to question,
             "degree" to degree,
-            "answer" to answer,
+            "order" to order,
             "timestamp" to timestamp
         )
     }
-
 }

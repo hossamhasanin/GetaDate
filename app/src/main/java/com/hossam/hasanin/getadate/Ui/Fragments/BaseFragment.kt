@@ -1,10 +1,15 @@
 package com.hossam.hasanin.getadate.Ui.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.hossam.hasanin.getadate.Externals.checkIfTheUserExsist
+import com.hossam.hasanin.getadate.Ui.LoginActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 open class BaseFragment : Fragment() , CoroutineScope {

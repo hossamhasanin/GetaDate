@@ -30,7 +30,7 @@ class CardsViewModel : ViewModel() {
 
     fun getUserCharacteristics(userId: String) : Deferred<QuerySnapshot>{
         return firestore.collection("users").document(userId)
-            .collection("characteristics").get().asDeferred()
+            .collection("characteristics").orderBy("order").get().asDeferred()
     }
 
     suspend fun getUsersDidntSeen(lastUsename: String?) : ArrayList<User>{

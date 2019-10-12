@@ -20,6 +20,7 @@ import com.hossam.hasanin.getadate.Models.Resturant
 
 import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
+import com.hossam.hasanin.getadate.Ui.Fragments.BaseMainPageFragment
 import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.DatingDetailsFactory
@@ -32,7 +33,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 
-class DatingDetailsFragment : BaseFragment() , KodeinAware {
+class DatingDetailsFragment : BaseMainPageFragment() , KodeinAware {
 
     private lateinit var viewModel: DatingDetailsViewModel
 

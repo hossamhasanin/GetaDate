@@ -20,6 +20,8 @@
             android:label="profile_fragment" tools:layout="@layout/profile_fragment">
         <action android:id="@+id/edit_characteristics"
                 app:destination="@id/characteristicsFragment2"/>
+        <action android:id="@+id/go_to_enhance_personalit_fragment"
+                app:destination="@id/enhancePersonalityFragment"/>
     </fragment>
     <fragment android:id="@+id/matchesFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.MatchesFragment"
@@ -65,5 +67,16 @@
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.ProfileSettings.CharacteristicsFragment"
             android:label="characteristics_fragment" tools:layout="@layout/characteristics_fragment">
         <argument android:name="isNew" app:argType="boolean"/>
+    </fragment>
+    <fragment android:id="@+id/enhancePersonalityFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.EnhancePersonalityFragment"
+            android:label="enhance_personality_fragment" tools:layout="@layout/enhance_personality_fragment">
+        <action android:id="@+id/go_to_add_more_questions"
+                app:destination="@id/addMoreQuestionsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/addMoreQuestionsFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.AddMoreQuestionsFragment"
+            android:label="add_more_questions_fragment" tools:layout="@layout/add_more_questions_fragment">
+        <argument android:name="cId" app:argType="string"/>
     </fragment>
 </navigation>

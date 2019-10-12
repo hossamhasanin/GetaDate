@@ -9,12 +9,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.hossam.hasanin.getadate.Externals.getGender
 import com.hossam.hasanin.getadate.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -83,5 +82,6 @@ class MainActivity : AppCompatActivity() {
 
 enum class MainPages{
     CARDS , PROFILE , MATCHES , SHOW_USER , RESERVE_RESTURANT
-    , PICK_TIME , DETAILS , ADVICES , EDIT_CHARACTERISTICS
+    , PICK_TIME , DETAILS , ADVICES , EDIT_CHARACTERISTICS , ENHANCEMENT_PERSONALITY
+    , ADD_MORE_QUESTIONS
 }

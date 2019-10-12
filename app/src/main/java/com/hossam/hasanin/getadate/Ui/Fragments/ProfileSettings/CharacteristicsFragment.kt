@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.Query
+import com.hossam.hasanin.getadate.Externals.getGender
 import com.hossam.hasanin.getadate.Models.Characteristic
-import com.hossam.hasanin.getadate.Models.UserCharacteristic
 import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.Ui.Adapter.CharacteristicsAdapter
 import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
@@ -43,7 +43,7 @@ class CharacteristicsFragment : BaseFragment() , KodeinAware {
 
     private lateinit var viewModel: CharacteristicsViewModel
 
-    private lateinit var adapter: CharacteristicsAdapter
+    var adapter: CharacteristicsAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,45 +59,52 @@ class CharacteristicsFragment : BaseFragment() , KodeinAware {
         val args = arguments?.let { CharacteristicsFragmentArgs.fromBundle(it) }
         val isNew = args!!.isNew
 
-        if (!isNew){
-            (activity as MainActivity).currentPage = MainPages.EDIT_CHARACTERISTICS
-            activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
-            activity!!.right_icon.visibility = View.GONE
-            activity!!.left_icon.visibility = View.VISIBLE
-            activity!!.title_toolbar.text = getString(R.string.edit_characteristics)
+//        if (!isNew){
+//            (activity as MainActivity).currentPage = MainPages.EDIT_CHARACTERISTICS
+//            activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
+//            activity!!.right_icon.visibility = View.GONE
+//            activity!!.left_icon.visibility = View.VISIBLE
+//            activity!!.title_toolbar.text = getString(R.string.edit_characteristics)
+//
+//            viewModel.getCharacteristics()
+//        }
 
-            viewModel.getCharacteristics()
+
+        launch {
+            val gender = viewModel.mAuth.currentUser?.getGender()
+
+            val query: Query = viewModel.fireStore
+                .collection("characteristics").whereEqualTo("gender" , gender)
+
+            val options: FirestoreRecyclerOptions<Characteristic?> =
+                FirestoreRecyclerOptions.Builder<Characteristic?>()
+                    .setQuery(query) { snapshot ->
+                        val characteristic : Characteristic? = snapshot.toObject(Characteristic::class.java)
+                        characteristic?.id = snapshot.id
+
+                        characteristic!!
+                    }
+                    .build()
+
+            adapter = characteristicsAdapter(options)
+
+            characteristics.adapter = adapter
+            characteristics.layoutManager = LinearLayoutManager(activity)
+
+            adapter!!.startListening()
         }
-
-        val query: Query = viewModel.fireStore
-            .collection("characteristics")
-
-        val options: FirestoreRecyclerOptions<Characteristic?> =
-            FirestoreRecyclerOptions.Builder<Characteristic?>()
-                .setQuery(query) { snapshot ->
-                    val characteristic : Characteristic? = snapshot.toObject(Characteristic::class.java)
-                    characteristic?.id = snapshot.id
-
-                    characteristic!!
-                }
-                .build()
-
-        adapter = characteristicsAdapter(options)
-
-        characteristics.adapter = adapter
-        characteristics.layoutManager = LinearLayoutManager(activity)
 
         save_characteristics.setOnClickListener {
             save_characteristics.isClickable = false
             saving_charec.visibility = View.VISIBLE
             saveCharacteristics()
-            Log.v("focus" , adapter.finalData.toString())
+            Log.v("focus" , adapter!!.userCharacteristicsMainData.toString())
         }
 
-        viewModel.characteristics.observe(this , Observer {
-            adapter.finalData = it
-            adapter.notifyDataSetChanged()
-        })
+//        viewModel.characteristics.observe(this , Observer {
+//            adapter.userCharacteristicsMainData = it
+//            adapter.notifyDataSetChanged()
+//        })
 
         viewModel.finshedSaving.observe(this , Observer { finished ->
             if (finished){
@@ -117,19 +124,18 @@ class CharacteristicsFragment : BaseFragment() , KodeinAware {
     }
 
     fun saveCharacteristics() = launch (Dispatchers.IO){
-        val data = adapter.finalData
-        Log.v("koko" , data.toString())
-        viewModel.saveIntoFireStore(data , adapter.deleted)
+        val mainCharacteristicData = adapter!!.userCharacteristicsMainData
+        val userQuestionData = adapter!!.userQuestionsAnswer
+        Log.v("koko" , mainCharacteristicData.toString())
+        viewModel.saveIntoFireStore(mainCharacteristicData , userQuestionData)
     }
 
-    override fun onStart() {
-        super.onStart()
-        adapter.startListening()
-    }
 
     override fun onDestroy() {
         super.onDestroy()
-        adapter.stopListening()
+        if (adapter != null){
+            adapter!!.stopListening()
+        }
     }
 
 }

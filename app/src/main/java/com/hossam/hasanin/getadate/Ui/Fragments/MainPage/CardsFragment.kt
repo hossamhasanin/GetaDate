@@ -1,5 +1,6 @@
 package com.hossam.hasanin.getadate.Ui.Fragments.MainPage
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,12 +11,15 @@ import android.view.animation.AnimationUtils
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.messaging.FirebaseMessaging
+import com.hossam.hasanin.getadate.Externals.checkIfTheUserExsist
 import com.hossam.hasanin.getadate.Externals.convertToListItems
 import com.hossam.hasanin.getadate.Externals.getGender
 import com.hossam.hasanin.getadate.Models.User
 import com.hossam.hasanin.getadate.Models.UserCharacteristic
 import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
+import com.hossam.hasanin.getadate.Ui.Fragments.BaseMainPageFragment
+import com.hossam.hasanin.getadate.Ui.LoginActivity
 import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.CardsFactory
@@ -26,6 +30,7 @@ import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.cards_fragment.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
@@ -34,7 +39,7 @@ import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 import java.lang.IllegalStateException
 
-class CardsFragment : BaseFragment() , KodeinAware{
+class CardsFragment : BaseMainPageFragment() , KodeinAware{
 
     override val kodein by closestKodein()
 
@@ -60,7 +65,6 @@ class CardsFragment : BaseFragment() , KodeinAware{
         activity!!.left_icon.visibility = View.VISIBLE
         activity!!.right_icon.visibility = View.VISIBLE
         (activity as MainActivity).currentPage = MainPages.CARDS
-
 
         viewModel = ViewModelProviders.of(this , cardsFactory).get(CardsViewModel::class.java)
 
@@ -94,7 +98,9 @@ class CardsFragment : BaseFragment() , KodeinAware{
         val slideOut: Animation =
             AnimationUtils.loadAnimation(activity!!.applicationContext, R.anim.slide_right_to_left)
 
-        getTheData(null)
+        try{
+            getTheData(null)
+        } catch (e:Exception){}
 
         like.setOnClickListener {
             if (users != null) {

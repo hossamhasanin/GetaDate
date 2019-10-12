@@ -19,6 +19,7 @@ import com.hossam.hasanin.getadate.Models.UserCharacteristic
 
 import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
+import com.hossam.hasanin.getadate.Ui.Fragments.BaseMainPageFragment
 import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.ShowUserFactory
@@ -30,7 +31,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 
-class ShowUserFragment : BaseFragment() , KodeinAware {
+class ShowUserFragment : BaseMainPageFragment() , KodeinAware {
 
     override val kodein by closestKodein()
 
@@ -240,8 +241,8 @@ class ShowUserFragment : BaseFragment() , KodeinAware {
         val question = layout.findViewById<TextView>(R.id.question)
         val answer = layout.findViewById<TextView>(R.id.answer)
 
-        question.text = userCharacteristic.question
-        answer.text = userCharacteristic.answer
+        //question.text = userCharacteristic.question
+        //answer.text = userCharacteristic.answer
 
         dialog.create().show()
     }

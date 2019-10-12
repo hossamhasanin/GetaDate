@@ -41,6 +41,17 @@ fun showTheErrors(context: Context , errors: ArrayList<ErrorTypes> , errorsMessa
     Toast.makeText(context , errorMess , Toast.LENGTH_LONG).show()
 }
 
+suspend fun checkIfTheUserExsist(action :(Boolean) -> Unit){
+    val mAuth = FirebaseAuth.getInstance()
+    val firestore = FirebaseFirestore.getInstance()
+    val data = firestore.collection("users").document(mAuth.currentUser!!.uid).get().asDeferred().await()
+    if (!data.exists()){
+        action(false)
+    } else {
+        action(true)
+    }
+}
+
 suspend fun FirebaseUser.getFirstName() : String? {
     val firestore = FirebaseFirestore.getInstance()
     val data = firestore.collection("users").document(this@getFirstName.uid).get().asDeferred().await()

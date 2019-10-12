@@ -166,10 +166,12 @@
         <Button
                 android:text="@string/relocate"
                 android:layout_width="0dp"
-                android:layout_height="47dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/profile_getlocation"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                android:fontFamily="@font/cairo_regular" android:background="@drawable/rounded_button_baby_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/cairo_regular"
+                android:background="@drawable/rounded_button_baby_blue"
                 android:textColor="#fff"
                 android:drawableStart="@drawable/ic_location_on_black_24dp"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
@@ -184,6 +186,40 @@
                 android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_image"
                 app:layout_constraintHorizontal_bias="0.975"/>
+
+
+        <TextView
+                android:id="@+id/add_more_info_tip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/more_info_about_your_personality"
+                android:fontFamily="@font/cairo_bold"
+                android:textSize="14sp"
+                android:background="@drawable/alert_box"
+                android:textColor="@android:color/white"
+                android:lines="2"
+                app:layout_constraintTop_toBottomOf="@+id/profile_age"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"/>
+
+        <Button
+                android:id="@+id/add_more_questions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_more"
+                android:fontFamily="@font/cairo_regular"
+                android:background="@drawable/rounded_button_baby_blue"
+                android:textColor="@android:color/white"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/add_more_info_tip"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.971"/>
+
         <TextView
                 android:text="@string/edit_characteristics"
                 android:layout_width="0dp"
@@ -192,10 +228,14 @@
                 android:background="@drawable/borderd_box"
                 android:drawableStart="@drawable/ic_keyboard_arrow_left_24dp"
                 app:layout_constraintBottom_toTopOf="@+id/profile_save" android:layout_marginBottom="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/profile_age" android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                android:fontFamily="@font/cairo_regular" android:textColor="#000" android:padding="10dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/add_more_questions"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/cairo_regular"
+                android:textColor="#000"
+                android:padding="10dp" android:layout_marginTop="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

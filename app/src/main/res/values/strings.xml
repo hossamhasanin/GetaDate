@@ -74,5 +74,9 @@
     <string name="some_advices">بعض النصائح</string>
     <string name="address">العنوان ...</string>
     <string name="edit_characteristics">تعديل الصفات</string>
+    <string name="add_more">اضف المزيد الان !</string>
+    <string name="more_info_about_your_personality">اضف المزيد من المعلومات عن شخصيتك لتجعل الجميع يعلمك بشكل افضل
+    </string>
+    <string name="add_to_your_personality">اضف الى شخصيتك</string>
 
 </resources>
