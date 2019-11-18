@@ -100,7 +100,7 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
         }
 
         edit_characteristics.setOnClickListener {
-            val action = ProfileFragmentDirections.editCharacteristics(false)
+            val action = ProfileFragmentDirections.editCharacteristics()
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -164,6 +164,8 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
         profile_age.setText(age.toString())
         val getAddress = viewModel.currentUser!!.getAddress()
         address.setText(getAddress)
+        val personalityRate = viewModel.currentUser!!.getPersonalityRate()
+        add_more_info_tip.text = getString(R.string.more_info_about_your_personality , String.format("%.2f", personalityRate))
 
         locationMetric = viewModel.currentUser!!.getLocation()
 

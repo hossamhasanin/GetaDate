@@ -39,7 +39,7 @@
                 android:fontFamily="@font/cairo_regular" android:textSize="14sp"/>
         <TextView
                 tools:text="المنصورة حي الجامعة"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/address"
                 app:layout_constraintEnd_toEndOf="parent"

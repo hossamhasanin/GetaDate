@@ -86,7 +86,7 @@ class EnhancePersonalityFragment : Fragment() , KodeinAware {
 
         groupAdapter!!.setOnItemClickListener { item, view ->
             if (item is CharacteristicRectItem){
-                val action = EnhancePersonalityFragmentDirections.goToAddMoreQuestions(item.characteristic.getId()!!)
+                val action = EnhancePersonalityFragmentDirections.goToAddMoreQuestions(item.characteristic.getId()!! , false)
                 Navigation.findNavController(view).navigate(action)
             }
         }

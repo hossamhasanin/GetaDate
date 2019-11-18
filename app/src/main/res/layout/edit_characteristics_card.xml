@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/card_container">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/const_container">
+
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:drawableStart="@drawable/ic_keyboard_arrow_left_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:textDirection="rtl"
+                android:fontFamily="@font/cairo_semibold"
+                tools:text="الصفة"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="1.0"
+                android:layout_marginBottom="16dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/details"
+                android:visibility="gone"
+                android:background="@color/grey_300" app:layout_constraintTop_toBottomOf="@+id/title"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.009">
+
+            <TextView
+                    android:text="@string/characteristic_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView" android:textColor="#000"
+                    android:textDirection="rtl"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="16sp" android:fontFamily="@font/cairo_light"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:inputType="numberSigned"
+                    android:ems="10"
+                    android:id="@+id/degree"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="36dp" android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView" app:layout_constraintHorizontal_bias="0.09"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/edittext_bordered_rounded" android:gravity="center"/>
+            <Button
+                    android:text="@string/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/delete"
+                    android:background="@drawable/rounded_red_box"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/cairo_semibold"
+                    app:layout_constraintStart_toEndOf="@+id/save"
+                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginTop="24dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintHorizontal_bias="0.95"/>
+            <Button
+                    android:text="@string/svae"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/save"
+                    android:background="@drawable/rounded_button_baby_blue"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/cairo_semibold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/degree"/>
+            <Button
+                    android:text="@string/edit_questions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_char"
+                    android:background="@drawable/rounded_green_box"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/cairo_semibold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/delete"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    app:layout_constraintHorizontal_bias="0.993" android:paddingStart="15dp" android:paddingEnd="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="16dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

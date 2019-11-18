@@ -11,12 +11,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/resturants_rec"
-            app:layout_constraintTop_toBottomOf="@+id/saving_bar"/>
+            app:layout_constraintTop_toBottomOf="@+id/loading_bar"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/saving_bar" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:id="@+id/loading_bar" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="parent" android:visibility="gone" android:indeterminate="true"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,7 +32,8 @@ class Application : Application(), KodeinAware {
         bind() from provider { DatingDetailsFactory() }
         bind() from provider { AdvicesFactory() }
         bind() from provider { EnhancePersonalityFactory() }
-        bind() from provider { AddMoreQuestionsFactory() }
+        bind() from provider { ModifyQuestionsFactory() }
+        bind() from provider { EditCharacteristicsFactory() }
     }
 
     override fun onCreate() {

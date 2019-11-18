@@ -164,46 +164,49 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
 
 
     private suspend fun bindUi() {
-        user_card_username.text = users?.get(index)?.username
-        user_card_validaty.text = "موثق"
-        alert_mess.text = getString(R.string.loading_the_characteristics)
+        try {
+            user_card_username.text = users?.get(index)?.username
+            user_card_validaty.text = "موثق"
+            alert_mess.text = getString(R.string.loading_the_characteristics)
 
-        userCharacteristics = viewModel.getUserCharacteristics(users?.get(index)?.id!!).await().toObjects(UserCharacteristic::class.java)
+            userCharacteristics = viewModel.getUserCharacteristics(users?.get(index)?.id!!).await()
+                .toObjects(UserCharacteristic::class.java)
 
-        if (!userCharacteristics.isNullOrEmpty()){
+            if (!userCharacteristics.isNullOrEmpty()) {
 
-            Log.v("koko" , userCharacteristics.toString())
+                Log.v("koko", userCharacteristics.toString())
 
-            val characteristicItems = userCharacteristics.convertToListItems()
+                val characteristicItems = userCharacteristics.convertToListItems()
 
-            val groupAdapter = GroupAdapter<ViewHolder>().apply {
-                spanCount = 2
-                addAll(if (characteristicItems.size > 1) characteristicItems.take(4) else characteristicItems.take(1))
-            }
-
-            user_characteristics.apply {
-                layoutManager = GridLayoutManager(this@CardsFragment.activity , groupAdapter.spanCount).apply {
-                    spanSizeLookup = groupAdapter.spanSizeLookup
+                val groupAdapter = GroupAdapter<ViewHolder>().apply {
+                    spanCount = 2
+                    addAll(if (characteristicItems.size > 1) characteristicItems.take(4) else characteristicItems.take(1))
                 }
-                adapter = groupAdapter
-            }
 
-            if (characteristicItems.size > 4){
-                ExpandableGroup(ExpandableHeader("أكمل الصفات" , cardView , like , dislike), false).apply {
-                    add(Section(characteristicItems.takeLast(characteristicItems.size-4)))
-                    groupAdapter.add(this)
+                user_characteristics.apply {
+                    layoutManager = GridLayoutManager(this@CardsFragment.activity, groupAdapter.spanCount).apply {
+                        spanSizeLookup = groupAdapter.spanSizeLookup
+                    }
+                    adapter = groupAdapter
                 }
+
+                if (characteristicItems.size > 4) {
+                    ExpandableGroup(ExpandableHeader("أكمل الصفات", cardView, like, dislike), false).apply {
+                        add(Section(characteristicItems.takeLast(characteristicItems.size - 4)))
+                        groupAdapter.add(this)
+                    }
+                }
+
+                alert_mess.visibility = View.GONE
+                user_characteristics.visibility = View.VISIBLE
+
+            } else {
+                showAlertMess(getString(R.string.characteristics_not_found))
             }
 
-            alert_mess.visibility = View.GONE
-            user_characteristics.visibility = View.VISIBLE
 
-        } else {
-            showAlertMess(getString(R.string.characteristics_not_found))
-        }
-
-
-        pro.visibility = View.GONE
+            pro.visibility = View.GONE
+        } catch (e: Exception){}
     }
 
     private fun setLikedUser(id : String?) = launch (Dispatchers.IO){

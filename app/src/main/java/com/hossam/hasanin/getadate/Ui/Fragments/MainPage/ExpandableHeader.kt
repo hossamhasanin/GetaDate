@@ -32,12 +32,12 @@ class ExpandableHeader(private val headerTitle: String , private val card: CardV
             expandableGroup.onToggleExpanded()
             viewHolder.item_expandable_header_icon.setImageResource(getRotatedIconResId())
             if (expandableGroup.isExpanded){
-                likeBtn.visibility = View.GONE
-                disLikeBtn.visibility = View.GONE
+                //likeBtn.visibility = View.GONE
+                //disLikeBtn.visibility = View.GONE
                 expand(card)
             } else {
-                likeBtn.visibility = View.VISIBLE
-                disLikeBtn.visibility = View.VISIBLE
+                //likeBtn.visibility = View.VISIBLE
+                //disLikeBtn.visibility = View.VISIBLE
                 collapse(card)
             }
         }

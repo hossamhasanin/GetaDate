@@ -75,8 +75,11 @@
     <string name="address">العنوان ...</string>
     <string name="edit_characteristics">تعديل الصفات</string>
     <string name="add_more">اضف المزيد الان !</string>
-    <string name="more_info_about_your_personality">اضف المزيد من المعلومات عن شخصيتك لتجعل الجميع يعلمك بشكل افضل
-    </string>
+    <string name="more_info_about_your_personality">نسبة شخصيتك — <xliff:g id="rate">%s</xliff:g> —
+        اضف المزيد من المعلومات عن شخصيتك لتجعل الجميع يعلمك بشكل افضل</string>
     <string name="add_to_your_personality">اضف الى شخصيتك</string>
+    <string name="delete">حذف</string>
+    <string name="svae">جفظ</string>
+    <string name="edit_questions">تعديل الاسئلة</string>
 
 </resources>

@@ -131,12 +131,6 @@ class ShowUserFragment : BaseMainPageFragment() , KodeinAware {
             adapter = groupAdapter
         }
 
-        groupAdapter.setOnItemClickListener { item, view ->
-            (item as? CardItem)?.let {
-                showCharacteristicDetails(it.characteristic)
-            }
-        }
-
     }
 
     private fun bindDatingRequest(datingRequest: DatingRequest?){
@@ -231,20 +225,6 @@ class ShowUserFragment : BaseMainPageFragment() , KodeinAware {
             ShowUserFragmentDirections.goToSetTheTime(requestId , id!!)
         }
         Navigation.findNavController(view).navigate(action)
-    }
-
-    private fun showCharacteristicDetails(userCharacteristic: UserCharacteristic){
-        val layout = layoutInflater.inflate(R.layout.view_characteristic_card , null)
-        val dialog = AlertDialog.Builder(activity)
-        dialog.setView(layout)
-
-        val question = layout.findViewById<TextView>(R.id.question)
-        val answer = layout.findViewById<TextView>(R.id.answer)
-
-        //question.text = userCharacteristic.question
-        //answer.text = userCharacteristic.answer
-
-        dialog.create().show()
     }
 
 //    if (datingRequest != null){

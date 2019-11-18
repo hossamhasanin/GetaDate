@@ -1,9 +1,7 @@
 package com.hossam.hasanin.getadate.Ui.Fragments.MainPage
 
-import android.opengl.Visibility
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,22 +9,24 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.hossam.hasanin.getadate.Externals.getLocation
 import com.hossam.hasanin.getadate.Models.Resturant
 
 import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.Ui.Adapter.ResturantsAdapter
+import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
 import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.ReserveResturantFactory
 import com.hossam.hasanin.getadate.ViewModels.MainPage.ReserveResturantViewModel
 import kotlinx.android.synthetic.main.reserve_resturant_fragment.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 
-class ReserveResturantFragment : Fragment() , KodeinAware {
+class ReserveResturantFragment : BaseFragment() , KodeinAware {
 
     override val kodein by closestKodein()
 
@@ -59,21 +59,10 @@ class ReserveResturantFragment : Fragment() , KodeinAware {
 
         viewModel = ViewModelProviders.of(this , reserveResturantFactory).get(ReserveResturantViewModel::class.java)
 
-        val query = viewModel.firestore.collection("resturants")
-        val options = FirestoreRecyclerOptions.Builder<Resturant>()
-            .setQuery(query){
-                val resturant = it.toObject(Resturant::class.java)
-                resturant?.withId(it.id)
-                return@setQuery resturant!!
-            }.build()
-        resturantsAdapter = ResturantsAdapter(options= options , viewModel = viewModel , userId = userId!! , requestId = requestId , bar = saving_bar)
-
-
-        bindRec()
-
+        getResturants()
 
         viewModel.completedSuccessFully.observe(this , Observer { isSuccessFull ->
-            saving_bar.visibility = View.GONE
+            loading_bar.visibility = View.GONE
             if (isSuccessFull){
                 Toast.makeText(this.context , getString(R.string.choosed_place_successfiully) , Toast.LENGTH_LONG).show()
                 this.findNavController().navigateUp()
@@ -82,26 +71,29 @@ class ReserveResturantFragment : Fragment() , KodeinAware {
             }
         })
 
+        viewModel.allResturants.observe(this , Observer { resturants ->
+            if (resturants != null){
+                loading_bar.visibility = View.GONE
+                bindRec(resturants)
+            } else {
+                Toast.makeText(this.context , "خطأ اثناء تحميل المطاعم" , Toast.LENGTH_LONG).show()
+                this.findNavController().navigateUp()
+            }
+        })
+
     }
 
-    private fun bindRec(){
+    private fun getResturants() = launch{
+        loading_bar.visibility = View.VISIBLE
+        viewModel.getResturants(viewModel.mAuth.currentUser!!.getLocation())
+    }
+
+    private fun bindRec(resturants: List<Resturant>){
+        resturantsAdapter = ResturantsAdapter(resturants = resturants , viewModel = viewModel , userId = userId!! , requestId = requestId , bar = loading_bar)
+
         resturants_rec.apply {
             layoutManager = LinearLayoutManager(this@ReserveResturantFragment.activity)
             adapter = resturantsAdapter
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (resturantsAdapter != null){
-            resturantsAdapter!!.startListening()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (resturantsAdapter != null){
-            resturantsAdapter!!.stopListening()
         }
     }
 

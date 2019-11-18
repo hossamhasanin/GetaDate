@@ -126,5 +126,12 @@ suspend fun FirebaseUser.getMatchList() : ArrayList<String> {
     return match
 }
 
+suspend fun FirebaseUser.getPersonalityRate() : Double? {
+    val firestore = FirebaseFirestore.getInstance()
+    val data = firestore.collection("users").document(this@getPersonalityRate.uid).get().asDeferred().await()
+    val user = data.toObject(User::class.java)
+    return user!!.personalityRate
+}
+
 val newUserListener = MutableLiveData<User>()
 var currentPage = MutableLiveData<MainPages>()

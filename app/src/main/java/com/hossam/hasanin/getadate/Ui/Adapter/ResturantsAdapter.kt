@@ -21,14 +21,11 @@ import com.hossam.hasanin.getadate.R
 import com.hossam.hasanin.getadate.ViewModels.MainPage.ReserveResturantViewModel
 import kotlinx.coroutines.*
 
-class ResturantsAdapter(options:FirestoreRecyclerOptions<Resturant> , val viewModel: ReserveResturantViewModel , val userId: String , val requestId: String? , val bar : ProgressBar) : FirestoreRecyclerAdapter<Resturant , ResturantsAdapter.Companion.ViewHolder>(options) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.resturant_card , parent , false)
-        return ViewHolder(view)
-    }
+class ResturantsAdapter(val resturants: List<Resturant> , val viewModel: ReserveResturantViewModel , val userId: String , val requestId: String? , val bar : ProgressBar) :
+    RecyclerView.Adapter<ResturantsAdapter.Companion.ViewHolder>() {
 
-    @ExperimentalCoroutinesApi
-    override fun onBindViewHolder(holder: ViewHolder, position: Int, resturant: Resturant) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val resturant = resturants[position]
         Glide.with(holder.image.context).load(resturant.image!!.toUri()).into(holder.image)
         holder.name.text = resturant.name
         holder.address.text = resturant.address
@@ -49,8 +46,17 @@ class ResturantsAdapter(options:FirestoreRecyclerOptions<Resturant> , val viewMo
                 holder.distance.context.startActivity(intent)
             }
         }
-
     }
+
+    override fun getItemCount(): Int {
+        return resturants.size
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.resturant_card , parent , false)
+        return ViewHolder(view)
+    }
+
 
     @ExperimentalCoroutinesApi
     private fun setCalculatedDistance(view: TextView, location:ArrayList<Double?>?){
