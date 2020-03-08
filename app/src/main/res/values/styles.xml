@@ -3,12 +3,12 @@
     <!-- Base application theme. -->
     <style name="MaleMode" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="cardColor">@color/dark_bink</item>
+        <item name="cardColor">@color/card_color</item>
         <item name="backgroundColor">@color/light_bink</item>
-        <item name="mainTextColor">@color/purpule</item>
+        <item name="mainTextColor">@color/darker_blue</item>
         <item name="startColor">@color/purpule</item>
         <item name="endColor">@color/baby_blue</item>
-        <item name="statusBarColor">@color/purpule</item>
+        <item name="statusBarColor">@color/shade1_blue</item>
 
 
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -20,7 +20,7 @@
 
     <style name="FeMaleMode" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="cardColor">@color/purpule</item>
+        <item name="cardColor">@color/card_color</item>
         <item name="backgroundColor">@color/light_purpule</item>
         <item name="mainTextColor">@color/dark_bink</item>
         <item name="startColor">@color/dark_bink</item>

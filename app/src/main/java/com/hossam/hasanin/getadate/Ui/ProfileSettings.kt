@@ -23,7 +23,6 @@ class ProfileSettings : AppCompatActivity() {
         setContentView(R.layout.activity_profile_settings)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        title_toolbar.text = getString(R.string.finish_signup)
 
 
     }

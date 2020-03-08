@@ -142,7 +142,7 @@ class MainInformationsFragment : BaseFragment() , KodeinAware {
         val address = profile_address.text.toString()
         val age = if (profile_age.text.toString().isNotEmpty()) profile_age.text.toString().toInt() else -1
         val location = arrayListOf(LocationHandeler.mlocation.value?.longitude , LocationHandeler.mlocation.value?.latitude)
-        val user = User(firstName = firstName , secondName = secondName , age = age , gender = gender , location = location , address = address)
+        val user = User(age = age , gender = gender , location = location)
 
         viewModel.saveUserData(user)
     }

@@ -26,6 +26,7 @@ import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.ShowUserFactory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.show_user_fragment.*
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -40,6 +41,8 @@ class ShowUserFragment : BaseMainPageFragment() , KodeinAware {
     private lateinit var viewModel: ShowUserViewModel
 
     private var finishedTasks = 0
+
+    private var charQuesNum = 0
 
     var id: String? = null
 
@@ -112,12 +115,14 @@ class ShowUserFragment : BaseMainPageFragment() , KodeinAware {
         val calculateDistance = currentUserLocation.distanceTo(userLoc)
         user_distance.text =  getString(R.string.parameter_distance , calculateDistance.toString())
         username.text = getString(R.string.parameter_username , user.username)
-        user_firstname.text = getString(R.string.parameter_firstname , user.firstName)
-        user_secondname.text = getString(R.string.parameter_second_name , user.secondName)
+        address.text = getString(R.string.parameter_address , user.address)
+       // user_firstname.text = getString(R.string.parameter_firstname , user.firstName)
+        //user_secondname.text = getString(R.string.parameter_second_name , user.secondName)
     }
 
-    private fun bindRec(characteristics : MutableList<UserCharacteristic>){
-        val items = characteristics.convertToListItems()
+    private fun bindRec(characteristics : MutableList<UserCharacteristic>) = launch (Main){
+        charQuesNum = viewModel.firestore.getCharQuesNum()!!
+        val items = characteristics.convertToListItems(charQuesNum)
 
         val groupAdapter = GroupAdapter<ViewHolder>().apply {
             spanCount = 2

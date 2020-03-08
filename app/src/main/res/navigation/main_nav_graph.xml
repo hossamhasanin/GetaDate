@@ -14,14 +14,14 @@
                 app:destination="@id/matchesFragment"
                 app:enterAnim="@android:anim/fade_in"
                 app:exitAnim="@android:anim/fade_out"/>
+        <action android:id="@+id/go_to_answer_questions"
+                app:destination="@id/answerQustionsFragment"/>
     </fragment>
     <fragment android:id="@+id/profileFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.ProfileFragment"
             android:label="profile_fragment" tools:layout="@layout/profile_fragment">
-        <action android:id="@+id/go_to_enhance_personalit_fragment"
-                app:destination="@id/enhancePersonalityFragment"/>
-        <action
-                app:destination="@id/editCharacteristicsFragment" android:id="@+id/editCharacteristics"/>
+        <action android:id="@+id/add_edit_questions"
+                app:destination="@id/answerQustionsFragment"/>
     </fragment>
     <fragment android:id="@+id/matchesFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.MatchesFragment"
@@ -63,22 +63,9 @@
     <fragment android:id="@+id/advicesFragment"
             android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.AdvicesFragment"
             android:label="advices_fragment" tools:layout="@layout/advices_fragment"/>
-    <fragment android:id="@+id/enhancePersonalityFragment"
-            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.EnhancePersonalityFragment"
-            android:label="enhance_personality_fragment" tools:layout="@layout/enhance_personality_fragment">
-        <action android:id="@+id/go_to_add_more_questions"
-                app:destination="@id/addMoreQuestionsFragment"/>
-    </fragment>
-    <fragment android:id="@+id/addMoreQuestionsFragment"
-            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.ModifyQuestionsFragment"
-            android:label="add_more_questions_fragment" tools:layout="@layout/add_more_questions_fragment">
-        <argument android:name="cId" app:argType="string"/>
-        <argument android:name="editMode" app:argType="boolean"/>
-    </fragment>
-    <fragment android:id="@+id/editCharacteristicsFragment"
-            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.EditCharacteristicsFragment"
-            android:label="edit_characteristics_fragment" tools:layout="@layout/edit_characteristics_fragment">
-        <action android:id="@+id/go_to_edit_questions"
-                app:destination="@id/addMoreQuestionsFragment"/>
+    <fragment android:id="@+id/answerQustionsFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.MainPage.AnswerQuestionsFragment"
+            android:label="answer_questions_fragment" tools:layout="@layout/answer_questions_fragment">
+        <argument android:name="edit" app:argType="boolean" android:defaultValue="false"/>
     </fragment>
 </navigation>

@@ -32,6 +32,7 @@ import kotlinx.android.synthetic.main.cards_fragment.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -49,6 +50,7 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
     private lateinit var userCharacteristics : MutableList<UserCharacteristic>
     private var index = 0
     var users:MutableList<User>? = null
+    private var charQuesNum = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,14 +63,13 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
         super.onActivityCreated(savedInstanceState)
         activity!!.left_icon.setImageResource(R.drawable.ic_account_circle_24dp)
         activity!!.right_icon.setImageResource(R.drawable.ic_couple_24dp)
-        activity!!.title_toolbar.text = getString(R.string.main_page)
         activity!!.left_icon.visibility = View.VISIBLE
         activity!!.right_icon.visibility = View.VISIBLE
         (activity as MainActivity).currentPage = MainPages.CARDS
 
         viewModel = ViewModelProviders.of(this , cardsFactory).get(CardsViewModel::class.java)
 
-        launch {
+        launch(IO) {
             val topic = if (viewModel.currentUser!!.getGender() == 1){
                 "female"
             } else {
@@ -142,6 +143,7 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
     private fun getTheData(lastUsername : String?) = launch {
         pro.visibility = View.VISIBLE
         users = viewModel.getUsersDidntSeen(lastUsername)
+        charQuesNum = viewModel.getCharQuesNum()!!
         if (users!!.isNotEmpty()){
             index = 0
 
@@ -165,9 +167,9 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
 
     private suspend fun bindUi() {
         try {
-            user_card_username.text = users?.get(index)?.username
-            user_card_validaty.text = "موثق"
-            alert_mess.text = getString(R.string.loading_the_characteristics)
+            text_cont1.text = users?.get(index)?.username
+            text_cont2.text = users?.get(index)?.age.toString()
+            //alert_mess.text = getString(R.string.loading_the_characteristics)
 
             userCharacteristics = viewModel.getUserCharacteristics(users?.get(index)?.id!!).await()
                 .toObjects(UserCharacteristic::class.java)
@@ -176,7 +178,7 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
 
                 Log.v("koko", userCharacteristics.toString())
 
-                val characteristicItems = userCharacteristics.convertToListItems()
+                val characteristicItems = userCharacteristics.convertToListItems(charQuesNum)
 
                 val groupAdapter = GroupAdapter<ViewHolder>().apply {
                     spanCount = 2
@@ -197,11 +199,11 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
                     }
                 }
 
-                alert_mess.visibility = View.GONE
+                //alert_mess.visibility = View.GONE
                 user_characteristics.visibility = View.VISIBLE
 
             } else {
-                showAlertMess(getString(R.string.characteristics_not_found))
+                showAlertMess("لا يوجد مرشحين")
             }
 
 
@@ -219,12 +221,12 @@ class CardsFragment : BaseMainPageFragment() , KodeinAware{
 
     private fun showAlertMess(mess: String){
         try {
-            alert_mess.visibility = View.VISIBLE
+            //alert_mess.visibility = View.VISIBLE
             user_characteristics.visibility = View.GONE
-            user_card_validaty.visibility = View.GONE
-            user_card_username.visibility = View.GONE
+            text_cont1.visibility = View.VISIBLE
+            text_cont2.visibility = View.GONE
             pro.visibility = View.GONE
-            alert_mess.text = mess
+            text_cont1.text = mess
         } catch (e:IllegalStateException){}
 
     }

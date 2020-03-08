@@ -118,41 +118,41 @@ class CharacteristicsAdapter(options: FirestoreRecyclerOptions<Characteristic?>)
 //        }
 
         val answersCards = question.answers!!.map {
-            AnswersItem(it , false)
+            //AnswersItem(it , false)
         }
 
-        val groupAdapter = GroupAdapter<ViewHolder>().apply {
-            spanCount = 2
-            addAll(answersCards)
-        }
+//        val groupAdapter = GroupAdapter<ViewHolder>().apply {
+//            spanCount = 2
+//            addAll(answersCards)
+//        }
+//
+//        groupAdapter.setOnItemClickListener { item, view ->
+//            (item as? AnswersItem)?.let {
+//
+//                if (!userQuestionsAnswer[characteristic.id]?.answer.isNullOrEmpty()
+//                    && !userQuestionsAnswer[characteristic.id]?.answer.equals(it.answer)) {
+//                    val p = answersCards.filter { previosItem ->
+//                        if (previosItem.answer.equals(userQuestionsAnswer[characteristic.id]?.answer)){
+//                            return@filter true
+//                        }
+//                        return@filter false
+//                    }
+//                    val s = answersCards.indexOf(p[0])
+//                    Log.v("koko" , s.toString())
+//                    (groupAdapter.getItem(s) as AnswersItem).let { k ->
+//                        //k.selected = false
+//                        k.notifyChanged()
+//                    }
+//                    groupAdapter.notifyItemChanged(s)
+//                }
+//
+//                userQuestionsAnswer[characteristic.id]?.answer = it.answer
+//                it.selected = true
+//                it.notifyChanged()
+//            }
+//        }
 
-        groupAdapter.setOnItemClickListener { item, view ->
-            (item as? AnswersItem)?.let {
-
-                if (!userQuestionsAnswer[characteristic.id]?.answer.isNullOrEmpty()
-                    && !userQuestionsAnswer[characteristic.id]?.answer.equals(it.answer)) {
-                    val p = answersCards.filter { previosItem ->
-                        if (previosItem.answer.equals(userQuestionsAnswer[characteristic.id]?.answer)){
-                            return@filter true
-                        }
-                        return@filter false
-                    }
-                    val s = answersCards.indexOf(p[0])
-                    Log.v("koko" , s.toString())
-                    (groupAdapter.getItem(s) as AnswersItem).let { k ->
-                        k.selected = false
-                        k.notifyChanged()
-                    }
-                    groupAdapter.notifyItemChanged(s)
-                }
-
-                userQuestionsAnswer[characteristic.id]?.answer = it.answer
-                it.selected = true
-                it.notifyChanged()
-            }
-        }
-
-        setTheAnswersList(holder , groupAdapter)
+        //setTheAnswersList(holder , groupAdapter)
 
     }
 

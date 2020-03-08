@@ -52,7 +52,6 @@ class MatchedUsersAdapter(options: FirestoreRecyclerOptions<User?>) : FirestoreR
 
         } else {
             holder.username.visibility = View.GONE
-            holder.constraintContainer.visibility = View.GONE
             holder.cardContainer.visibility = View.GONE
         }
     }
@@ -66,8 +65,7 @@ class MatchedUsersAdapter(options: FirestoreRecyclerOptions<User?>) : FirestoreR
     companion object{
         class ViewHolder(val item: View) : RecyclerView.ViewHolder(item){
             val username:TextView = item.findViewById(R.id.match_username)
-            val constraintContainer: ConstraintLayout = item.findViewById(R.id.const_container)
-            val cardContainer: CardView = item.findViewById(R.id.card_container)
+            val cardContainer: ConstraintLayout = item.findViewById(R.id.card_container)
             val status:TextView = item.findViewById(R.id.status)
         }
     }

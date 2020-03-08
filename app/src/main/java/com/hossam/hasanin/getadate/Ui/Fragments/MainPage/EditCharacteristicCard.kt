@@ -42,8 +42,8 @@ class EditCharacteristicCard(val data: UserCharacteristic , val viewModel: EditC
         }
 
         viewHolder.itemView.edit_char.setOnClickListener {
-            val action = EditCharacteristicsFragmentDirections.goToEditQuestions(data.getId()!! , true)
-            Navigation.findNavController(it).navigate(action)
+            //val action = EditCharacteristicsFragmentDirections.goToEditQuestions(data.getId()!! , true)
+            //Navigation.findNavController(it).navigate(action)
         }
 
     }

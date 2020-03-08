@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/signup_login_graph"
+        app:startDestination="@id/loginFragment">
+
+    <fragment android:id="@+id/loginFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.SignupLogin.LoginFragment"
+            android:label="login_fragment" tools:layout="@layout/login_fragment">
+        <action android:id="@+id/signup_choosing_gender"
+                app:destination="@id/signupChoosingGenderFragment"/>
+    </fragment>
+    <fragment android:id="@+id/signupChoosingGenderFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.SignupLogin.SignupChoosingGenderFragment"
+            android:label="signup_choosing_gender_fragment" tools:layout="@layout/signup_choosing_gender_fragment">
+        <action android:id="@+id/go_to_signup"
+                app:destination="@id/signupFragment"/>
+    </fragment>
+    <fragment android:id="@+id/signupFragment"
+            android:name="com.hossam.hasanin.getadate.Ui.Fragments.SignupLogin.SignupFragment"
+            android:label="signup_fragment" tools:layout="@layout/signup_fragment">
+        <argument android:name="gender" app:argType="integer"/>
+    </fragment>
+</navigation>

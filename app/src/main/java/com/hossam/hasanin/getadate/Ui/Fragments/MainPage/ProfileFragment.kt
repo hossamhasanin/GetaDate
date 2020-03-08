@@ -19,12 +19,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import com.google.firebase.firestore.FirebaseFirestoreException
 import com.hossam.hasanin.getadate.Externals.*
 import com.hossam.hasanin.getadate.Models.User
 
 import com.hossam.hasanin.getadate.R
-import com.hossam.hasanin.getadate.Ui.Fragments.BaseFragment
 import com.hossam.hasanin.getadate.Ui.Fragments.BaseMainPageFragment
 import com.hossam.hasanin.getadate.Ui.LoginActivity
 import com.hossam.hasanin.getadate.Ui.MainActivity
@@ -63,7 +61,6 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
         activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
         activity!!.right_icon.visibility = View.GONE
         activity!!.left_icon.visibility = View.VISIBLE
-        activity!!.title_toolbar.text = getString(R.string.profile)
         (activity as MainActivity).currentPage = MainPages.PROFILE
 
 
@@ -100,7 +97,8 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
         }
 
         edit_characteristics.setOnClickListener {
-            val action = ProfileFragmentDirections.editCharacteristics()
+            val action = ProfileFragmentDirections.addEditQuestions()
+            action.edit = true
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -111,7 +109,7 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
         }
 
         add_more_questions.setOnClickListener {
-            val action = ProfileFragmentDirections.goToEnhancePersonalitFragment()
+            val action = ProfileFragmentDirections.addEditQuestions()
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -156,10 +154,10 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
         profile_username.setText(username)
         val email = viewModel.currentUser!!.email
         profile_email.setText(email)
-        val firstName = viewModel.currentUser!!.getFirstName()
-        profile_first_name.setText(firstName)
-        val secondName = viewModel.currentUser!!.getSecondName()
-        profile_second_name.setText(secondName)
+//        val firstName = viewModel.currentUser!!.getFirstName()
+//        profile_first_name.setText(firstName)
+//        val secondName = viewModel.currentUser!!.getSecondName()
+        //profile_second_name.setText(secondName)
         val age = viewModel.currentUser!!.getAge()
         profile_age.setText(age.toString())
         val getAddress = viewModel.currentUser!!.getAddress()
@@ -174,9 +172,9 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
     private fun upSertUserData() = launch {
         val username = if (profile_username.text.toString().trim().equals("")) viewModel.currentUser!!.displayName else profile_username.text.toString()
         val email = if (profile_email.text.toString().trim().equals("")) viewModel.currentUser!!.email else profile_email.text.toString()
-        val firstName = if (profile_first_name.text.toString().trim().equals("")) viewModel.currentUser!!.getFirstName() else profile_first_name.text.toString()
-        val secondName = if (profile_second_name.text.toString().trim().equals("")) viewModel.currentUser!!.getSecondName() else profile_second_name.text.toString()
-        val address = if (address.text.toString().trim().equals("")) viewModel.currentUser!!.getAddress() else address.text.toString()
+//        val firstName = if (profile_first_name.text.toString().trim().equals("")) viewModel.currentUser!!.getFirstName() else profile_first_name.text.toString()
+//        val secondName = if (profile_second_name.text.toString().trim().equals("")) viewModel.currentUser!!.getSecondName() else profile_second_name.text.toString()
+//        val address = if (address.text.toString().trim().equals("")) viewModel.currentUser!!.getGovernorate() else address.text.toString()
         val age = if (!profile_age.text.toString().trim().equals("") || profile_age.text.toString().toInt() in 101 downTo 9) profile_age.text.toString().toInt() else viewModel.currentUser!!.getAge()
         val gender = if (profile_gender.text == getString(R.string.gender_male)) 1 else 0
         if (LocationHandeler.mlocation.value != null){
@@ -187,12 +185,9 @@ class ProfileFragment : BaseMainPageFragment() , KodeinAware {
             id = viewModel.currentUser!!.uid,
             username = username,
             email = email,
-            firstName = firstName,
-            secondName = secondName,
             age = age,
             gender = gender,
-            location = locationMetric,
-            address = address)
+            location = locationMetric)
         viewModel.upSertUserData(user , this@ProfileFragment.activity!!){
 
             if (it != null){

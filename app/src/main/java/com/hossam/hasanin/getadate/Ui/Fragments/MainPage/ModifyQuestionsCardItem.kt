@@ -25,10 +25,10 @@ class ModifyQuestionsCardItem(val data: CharacteristicQuestions, val viewModel:M
         viewHolder.itemView.question.text = data.title
 
         val answersCards = data.answers!!.map {
-            AnswersItem(it , it == userAnswer)
+            //AnswersItem(it , it == userAnswer)
         }
 
-        bindAnswersList(viewHolder , answersCards)
+        //bindAnswersList(viewHolder , answersCards)
 
         if (!userAnswer.isNullOrEmpty()){
             viewHolder.itemView.delete.visibility = View.VISIBLE
@@ -44,7 +44,7 @@ class ModifyQuestionsCardItem(val data: CharacteristicQuestions, val viewModel:M
                     viewHolder.itemView.delete.visibility = View.VISIBLE
                 }
 
-                question = UserCharacteristicQuestion(data.title , data.cId , answersCards[selectedItem!!].answer)
+                //question = UserCharacteristicQuestion(data.title , data.cId , answersCards[selectedItem!!].answer)
                 question!!.withId(data.getId())
                 viewModel.saveTheQuestion(question!!){
                     Toast.makeText(viewHolder.itemView.context , "تم الحفظ" , Toast.LENGTH_SHORT).show()
@@ -87,13 +87,13 @@ class ModifyQuestionsCardItem(val data: CharacteristicQuestions, val viewModel:M
             (item as? AnswersItem)?.let {
                 if (selectedItem != null){
                     (groupAdapter.getItem(selectedItem!!) as AnswersItem).let { k->
-                        k.selected = false
+                        //k.selected = false
                         k.notifyChanged()
                     }
                     groupAdapter.notifyItemChanged(selectedItem!!)
                 }
                 selectedItem = answersCards.indexOf(item)
-                it.selected = true
+                //it.selected = true
                 it.notifyChanged()
             }
         }

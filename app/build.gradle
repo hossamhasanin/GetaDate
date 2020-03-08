@@ -43,6 +43,11 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation project(":TinderCards")
 
+//    // material spinner
+//    implementation 'com.github.tiper:MaterialSpinner:1.4.0'
+
+    // joda for date an time
+    implementation 'net.danlew:android.joda:2.10.3'
 
     // Groupie RecyclerView
     implementation 'com.xwray:groupie:2.1.0'

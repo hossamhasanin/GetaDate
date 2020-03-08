@@ -17,6 +17,7 @@ object Constants{
         ERROR_MESSAGES.put(ErrorTypes.FIREBASE_SERVER_ERROR , "خطأ في السرفر برجاء اعادة المحاولة بعد لحظات")
         ERROR_MESSAGES.put(ErrorTypes.WRONG_EMAIL_OR_PASSWORD , "تحقق من الاميل و كلمة المرور")
         ERROR_MESSAGES.put(ErrorTypes.ADDRESS_ERROR , "يجب ان تصف عنوانك")
+        ERROR_MESSAGES.put(ErrorTypes.USING_SAME_EMAIL , "تم التسجيل بذلك الحساب مسبقا !")
 
         return ERROR_MESSAGES
     }

@@ -115,5 +115,9 @@ class CardsViewModel : ViewModel() {
         return firestore.collection("users").document(currentUser.uid).update(data as Map<String, Any>).asDeferred()
     }
 
+    suspend fun getCharQuesNum() : Int?{
+        return firestore.getCharQuesNum()
+    }
+
 
 }

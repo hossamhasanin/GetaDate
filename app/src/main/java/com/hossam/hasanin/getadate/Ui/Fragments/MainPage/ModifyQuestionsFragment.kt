@@ -48,23 +48,22 @@ class ModifyQuestionsFragment : BaseMainPageFragment() , KodeinAware{
         activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
         activity!!.right_icon.visibility = View.GONE
         activity!!.left_icon.visibility = View.VISIBLE
-        activity!!.title_toolbar.text = getString(R.string.add_to_your_personality)
         (activity as MainActivity).currentPage = MainPages.ADD_MORE_QUESTIONS
 
-        val args = arguments?.let { ModifyQuestionsFragmentArgs.fromBundle(it) }
-        val cId = args!!.cId
-        editMode = args.editMode
+//        val args = arguments?.let { ModifyQuestionsFragmentArgs.fromBundle(it) }
+//        val cId = args!!.cId
+//        editMode = args.editMode
 
-        viewModel = ViewModelProviders.of(this , addMoreQuestionsFactory).get(ModifyQuestionsViewModel::class.java)
-
-        loading.visibility = View.VISIBLE
-        viewModel.getQuestions(cId)
-
-        viewModel.questions.observe(this , Observer {
-            if (it != null){
-                bindUi(it , cId)
-            }
-        })
+//        viewModel = ViewModelProviders.of(this , addMoreQuestionsFactory).get(ModifyQuestionsViewModel::class.java)
+//
+//        loading.visibility = View.VISIBLE
+//        viewModel.getQuestions(cId)
+//
+//        viewModel.questions.observe(this , Observer {
+//            if (it != null){
+//                bindUi(it , cId)
+//            }
+//        })
 
     }
 

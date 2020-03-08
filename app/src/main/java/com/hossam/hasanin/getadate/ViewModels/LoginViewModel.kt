@@ -28,7 +28,7 @@ class LoginViewModel : ViewModel() {
                     }
                     action(mUser , ArrayList())
                 } else {
-                    errorsList.add(ErrorTypes.WRONG_EMAIL_OR_PASSWORD)
+                    errorsList.add(ErrorTypes.USING_SAME_EMAIL)
                     action(null , errorsList)
                 }
             }

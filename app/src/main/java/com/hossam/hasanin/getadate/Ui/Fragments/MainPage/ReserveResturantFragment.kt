@@ -47,7 +47,6 @@ class ReserveResturantFragment : BaseFragment() , KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity!!.title_toolbar.text = getString(R.string.choose_place)
         activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
         activity!!.right_icon.visibility = View.GONE
         activity!!.left_icon.visibility = View.VISIBLE

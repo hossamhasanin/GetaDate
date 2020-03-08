@@ -20,7 +20,7 @@ import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.user_card_expandable_header.*
 
 
-class ExpandableHeader(private val headerTitle: String , private val card: CardView , private val likeBtn: ImageView , private val disLikeBtn: ImageView) : Item() , ExpandableItem {
+class ExpandableHeader(private val headerTitle: String , private val card: ViewGroup , private val likeBtn: ImageView , private val disLikeBtn: ImageView) : Item() , ExpandableItem {
 
     private lateinit var expandableGroup: ExpandableGroup
 

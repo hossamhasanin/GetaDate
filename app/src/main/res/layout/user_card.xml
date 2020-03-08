@@ -21,12 +21,40 @@
             app:layout_constraintTop_toTopOf="parent"
             android:maxLines="2"
             android:padding="10dp"/>
-    <TextView
-            tools:text="5/10"
+
+    <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/score" android:fontFamily="@font/cairo_regular"
-            android:textColor="#fff" android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/characteristic" app:layout_constraintHorizontal_bias="0.498"/>
+            app:layout_constraintTop_toTopOf="@+id/guideline" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_favorite_white"
+                android:id="@+id/heart_1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_favorite_white"
+                android:id="@+id/heart_2"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_favorite_white"
+                android:id="@+id/heart_3"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_favorite_white"
+                android:id="@+id/heart_4"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_favorite_white"
+                android:id="@+id/heart_5"/>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/guideline" app:layout_constraintGuide_begin="62dp" android:orientation="horizontal"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

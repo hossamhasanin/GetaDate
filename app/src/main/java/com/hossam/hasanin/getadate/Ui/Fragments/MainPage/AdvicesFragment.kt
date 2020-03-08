@@ -48,7 +48,6 @@ class AdvicesFragment : BaseMainPageFragment() , KodeinAware {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as MainActivity).currentPage = MainPages.ADVICES
-        activity!!.title_toolbar.text = getString(R.string.some_advices)
         activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
         activity!!.right_icon.visibility = View.GONE
         activity!!.left_icon.visibility = View.VISIBLE

@@ -7,11 +7,13 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.hossam.hasanin.getadate.Models.User
 import com.hossam.hasanin.getadate.Models.UserCharacteristic
 import com.hossam.hasanin.getadate.Ui.Fragments.MainPage.CardItem
 import com.hossam.hasanin.getadate.Ui.MainPages
 import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 fun <T> Task<T>.asDeferred(): Deferred<T> {
     var deferred = CompletableDeferred<T>()
@@ -27,11 +29,12 @@ fun <T> Task<T>.asDeferred(): Deferred<T> {
     return deferred
 }
 
-fun MutableList<UserCharacteristic>.convertToListItems() : List<CardItem> {
+fun MutableList<UserCharacteristic>.convertToListItems(quesNum: Int) : List<CardItem> {
     return this.map {
-        CardItem(it)
+        CardItem(it , quesNum)
     }
 }
+
 
 fun showTheErrors(context: Context , errors: ArrayList<ErrorTypes> , errorsMessage : HashMap<ErrorTypes , String>){
     var errorMess = ""
@@ -52,18 +55,12 @@ suspend fun checkIfTheUserExsist(action :(Boolean) -> Unit){
     }
 }
 
-suspend fun FirebaseUser.getFirstName() : String? {
-    val firestore = FirebaseFirestore.getInstance()
-    val data = firestore.collection("users").document(this@getFirstName.uid).get().asDeferred().await()
-    val user = data.toObject(User::class.java)
-    return user!!.firstName
-}
 
-suspend fun FirebaseUser.getSecondName() : String? {
+suspend fun FirebaseUser.getGovernorate() : String? {
     val firestore = FirebaseFirestore.getInstance()
-    val data = firestore.collection("users").document(this@getSecondName.uid).get().asDeferred().await()
+    val data = firestore.collection("users").document(this@getGovernorate.uid).get().asDeferred().await()
     val user = data.toObject(User::class.java)
-    return user!!.secondName
+    return user!!.governorate
 }
 
 suspend fun FirebaseUser.getAddress() : String? {
@@ -73,6 +70,10 @@ suspend fun FirebaseUser.getAddress() : String? {
     return user!!.address
 }
 
+suspend fun FirebaseFirestore.getCharQuesNum(): Int?{
+    val data = collection("metaData").document("data").get().asDeferred().await()
+    return (data["char_question_number"] as Long).toInt()
+}
 
 suspend fun FirebaseUser.getAge() : Int? {
     val firestore = FirebaseFirestore.getInstance()

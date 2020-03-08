@@ -11,32 +11,6 @@
             android:layout_height="wrap_content">
 
         <TextView
-                tools:text="الاسم الاول :"
-                android:gravity="start"
-                android:background="@drawable/edittext_bordered_rounded"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_firstname" android:textSize="14sp"
-                android:fontFamily="@font/cairo_regular" android:textColor="#000"
-                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/username"/>
-        <TextView
-                tools:text="الاسم الثاني :"
-                android:gravity="start"
-                android:background="@drawable/edittext_bordered_rounded"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/user_secondname" android:textSize="14sp"
-                android:fontFamily="@font/cairo_regular" android:textColor="#000"
-                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/user_firstname"/>
-        <TextView
                 tools:text="اسم المستخدم :"
                 android:gravity="start"
                 android:background="@drawable/edittext_bordered_rounded"
@@ -48,6 +22,21 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="28dp"
                 app:layout_constraintTop_toBottomOf="@+id/user_distance" app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+                tools:text="العنوان : "
+                android:gravity="start"
+                android:background="@drawable/edittext_bordered_rounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/address" android:textSize="14sp"
+                android:fontFamily="@font/cairo_regular" android:textColor="#000"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/username" app:layout_constraintHorizontal_bias="0.0"/>
+
+
         <TextView
                 tools:text="يبعد عنك :"
                 android:gravity="start"
@@ -86,8 +75,9 @@
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/user_secondname" android:id="@+id/user_charecteristic"/>
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:id="@+id/user_charecteristic" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/address"/>
         <TextView
                 tools:text="حالة الطلب : "
                 android:layout_width="0dp"

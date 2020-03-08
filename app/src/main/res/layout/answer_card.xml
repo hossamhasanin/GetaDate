@@ -3,8 +3,9 @@
         tools:text="انا الي كتير بلوم نفسي"
         android:fontFamily="@font/cairo_regular"
         android:textColor="@android:color/black"
-        android:background="@drawable/gray_tag_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:id="@+id/answer" android:layout_margin="10dp">
+        android:background="@drawable/non_selected_tag_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/answer" android:layout_margin="10dp"
+        android:gravity="center">
 
 </TextView>

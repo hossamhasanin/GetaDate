@@ -3,7 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="purpule">#7905FA</color>
     <color name="light_purpule">#B179FD</color>
+    <color name="card_color">#5966FF</color>
     <color name="baby_blue">#1D7CFC</color>
+    <color name="darker_blue">#57A0FF</color>
+    <color name="shade1_blue">#5966FF</color>
     <color name="light_bink">#FE84D5</color>
     <color name="dark_bink">#FE2FBA</color>
+    <color name="pink_shade1">#ff9eea</color>
 </resources>

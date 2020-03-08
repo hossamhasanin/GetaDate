@@ -10,6 +10,9 @@ import com.hossam.hasanin.getadate.ViewModels.Factories.LauncherFactory
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.*
 import com.hossam.hasanin.getadate.ViewModels.Factories.ProfileSettings.CharacteristicsFactory
 import com.hossam.hasanin.getadate.ViewModels.Factories.ProfileSettings.MainInformationsFactory
+import com.hossam.hasanin.getadate.ViewModels.Factories.SignupLogin.LoginFactory
+import com.hossam.hasanin.getadate.ViewModels.Factories.SignupLogin.SignupChoosingGenderFactory
+import com.hossam.hasanin.getadate.ViewModels.Factories.SignupLogin.SignupFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.generic.bind
@@ -34,6 +37,11 @@ class Application : Application(), KodeinAware {
         bind() from provider { EnhancePersonalityFactory() }
         bind() from provider { ModifyQuestionsFactory() }
         bind() from provider { EditCharacteristicsFactory() }
+        bind() from provider { LoginFactory() }
+        bind() from provider { SignupFactory() }
+        bind() from provider { SignupChoosingGenderFactory() }
+        bind() from provider { AnswerQuestionsFactory() }
+
     }
 
     override fun onCreate() {

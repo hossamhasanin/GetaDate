@@ -13,30 +13,23 @@ class LauncherViewModel : ViewModel() {
 
     val mAuth = FirebaseAuth.getInstance()
     val firestore = FirebaseFirestore.getInstance()
-    var login = false
+    var login = MutableLiveData<Boolean>()
 
-    @ExperimentalCoroutinesApi
-    fun checkLoggedIn(action: () -> Unit){
+    fun checkLoggedIn(){
         Log.v("koko" , "check")
         if (mAuth.currentUser != null){
             firestore.collection("users").document(mAuth.currentUser!!.uid).get().addOnCompleteListener {
                 if (it.isSuccessful && it.result!!.exists()){
-                    login = true
+                    login.postValue(true)
                 } else {
-                    login = false
+                    login.postValue(false)
                     mAuth.currentUser!!.delete()
                     Log.v("koko" , it.exception.toString())
                 }
-                action()
             }
         } else {
             Log.v("koko" , "no user")
-            login = false
-            CoroutineScope(Dispatchers.Main).launch {
-                delay(2000)
-                action()
-                this.cancel()
-            }
+            login.postValue(false)
         }
     }
 

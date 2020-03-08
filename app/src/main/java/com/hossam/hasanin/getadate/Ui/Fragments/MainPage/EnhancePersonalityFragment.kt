@@ -50,7 +50,6 @@ class EnhancePersonalityFragment : Fragment() , KodeinAware {
         activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
         activity!!.right_icon.visibility = View.GONE
         activity!!.left_icon.visibility = View.VISIBLE
-        activity!!.title_toolbar.text = getString(R.string.add_to_your_personality)
         (activity as MainActivity).currentPage = MainPages.ENHANCEMENT_PERSONALITY
 
         viewModel = ViewModelProviders.of(this , enhancePersonalityFactory).get(EnhancePersonalityViewModel::class.java)
@@ -86,8 +85,8 @@ class EnhancePersonalityFragment : Fragment() , KodeinAware {
 
         groupAdapter!!.setOnItemClickListener { item, view ->
             if (item is CharacteristicRectItem){
-                val action = EnhancePersonalityFragmentDirections.goToAddMoreQuestions(item.characteristic.getId()!! , false)
-                Navigation.findNavController(view).navigate(action)
+//                val action = EnhancePersonalityFragmentDirections.goToAddMoreQuestions(item.characteristic.getId()!! , false)
+//                Navigation.findNavController(view).navigate(action)
             }
         }
     }
