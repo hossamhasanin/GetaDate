@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
         CoroutineScope(Dispatchers.Main).launch {
             val mAuth = FirebaseAuth.getInstance()
             if (mAuth.currentUser!!.getGender() == 1){
@@ -51,32 +50,46 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
 
+//
+//        right_icon.setOnClickListener {
+//            if (currentPage == MainPages.CARDS){
+//                currentPage = MainPages.MATCHES
+//                this.findNavController(R.id.nav_host_fragment).navigate(R.id.go_to_match_list)
+//            }
+//        }
+//
+//        left_icon.setOnClickListener {
+//            if (currentPage == MainPages.CARDS){
+//                currentPage = MainPages.PROFILE
+//                this.findNavController(R.id.nav_host_fragment).navigate(R.id.go_to_profile)
+//            } else {
+////                if (currentPage == MainPages.SHOW_USER){
+////                    currentPage = MainPages.MATCHES
+////                } else if (currentPage == MainPages.RESERVE_RESTURANT || currentPage == MainPages.PICK_TIME) {
+////                    currentPage = MainPages.SHOW_USER
+////                } else if (currentPage == MainPages.PROFILE) {
+////                    currentPage = MainPages.CARDS
+////                } else if (currentPage == MainPages.MATCHES){
+////                    currentPage = MainPages.CARDS
+////                }
+//                this.findNavController(R.id.nav_host_fragment).navigateUp()
+//            }
+//        }
 
-        right_icon.setOnClickListener {
-            if (currentPage == MainPages.CARDS){
-                currentPage = MainPages.MATCHES
-                this.findNavController(R.id.nav_host_fragment).navigate(R.id.go_to_match_list)
+        nav_bottom.selectedItemId = R.id.home
+        nav_bottom.setOnNavigationItemSelectedListener {
+
+            when {
+                it.itemId == R.id.home -> this.findNavController(R.id.nav_host_fragment).navigate(R.id.cardsFragment)
+                it.itemId == R.id.profile -> this.findNavController(R.id.nav_host_fragment).navigate(R.id.profileFragment)
+                it.itemId == R.id.matches -> this.findNavController(R.id.nav_host_fragment).navigate(R.id.matchesFragment)
+                it.itemId == R.id.settings -> {
+
+                }
             }
-        }
 
-        left_icon.setOnClickListener {
-            if (currentPage == MainPages.CARDS){
-                currentPage = MainPages.PROFILE
-                this.findNavController(R.id.nav_host_fragment).navigate(R.id.go_to_profile)
-            } else {
-//                if (currentPage == MainPages.SHOW_USER){
-//                    currentPage = MainPages.MATCHES
-//                } else if (currentPage == MainPages.RESERVE_RESTURANT || currentPage == MainPages.PICK_TIME) {
-//                    currentPage = MainPages.SHOW_USER
-//                } else if (currentPage == MainPages.PROFILE) {
-//                    currentPage = MainPages.CARDS
-//                } else if (currentPage == MainPages.MATCHES){
-//                    currentPage = MainPages.CARDS
-//                }
-                this.findNavController(R.id.nav_host_fragment).navigateUp()
-            }
+            return@setOnNavigationItemSelectedListener true
         }
-
 
     }
 

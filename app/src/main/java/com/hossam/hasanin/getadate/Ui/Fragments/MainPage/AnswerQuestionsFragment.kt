@@ -49,10 +49,7 @@ class AnswerQuestionsFragment : BaseFragment() , KodeinAware{
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as MainActivity).currentPage = MainPages.ANSWER_QUESTIIONS
-        activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
-        activity!!.right_icon.visibility = View.GONE
-        activity!!.left_icon.visibility = View.VISIBLE
+        activity?.toolbar!!.visibility = View.GONE
 
         val args = arguments?.let { AnswerQuestionsFragmentArgs.fromBundle(it) }
 

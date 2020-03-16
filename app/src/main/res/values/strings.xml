@@ -52,7 +52,7 @@
     <string name="parameter_firstname">     الاسم الاول :<xliff:g id="firstname">%s</xliff:g></string>
     <string name="parameter_username">    اسم المستخدم :<xliff:g id="username">%s</xliff:g></string>
     <string name="parameter_distance">    يبعد عنك :<xliff:g id="distance">m %s</xliff:g></string>
-    <string name="parameter_age">    السن :<xliff:g id="age">%s</xliff:g></string>
+    <string name="parameter_age"><xliff:g id="age">%s</xliff:g> سنة </string>
     <string name="parameter_date">    التاريخ :<xliff:g id="date">%s</xliff:g></string>
     <string name="parameter_time">    الوقت :<xliff:g id="time">%s</xliff:g></string>
     <string name="parameter_address">    العنوان :<xliff:g id="time">%s</xliff:g></string>
@@ -75,7 +75,7 @@
     <string name="some_advices">بعض النصائح</string>
     <string name="address">العنوان ...</string>
     <string name="edit_characteristics">تعديل الصفات</string>
-    <string name="add_more">اضف المزيد الان !</string>
+    <string name="add_more">اضف المزيد من الاسئلة</string>
     <string name="more_info_about_your_personality">نسبة شخصيتك — <xliff:g id="rate">%s</xliff:g> —
         اضف المزيد من المعلومات عن شخصيتك لتجعل الجميع يعلمك بشكل افضل</string>
     <string name="add_to_your_personality">اضف الى شخصيتك</string>

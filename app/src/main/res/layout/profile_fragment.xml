@@ -29,114 +29,35 @@
                 <!--app:layout_constraintHorizontal_bias="0.508" android:textSize="24sp"/>-->
 
 
-        <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/address"
-                android:ems="10"
-                android:background="@drawable/edittext_bordered_rounded"
-                android:id="@+id/address"
-                android:layout_weight="1"
-                android:fontFamily="@font/cairo_regular"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_email"/>
-        <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/enter_your_email"
-                android:ems="10"
-                android:background="@drawable/edittext_bordered_rounded"
-                android:id="@+id/profile_email"
-                android:layout_weight="1"
-                android:fontFamily="@font/cairo_regular"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_username"/>
-        <Button
-                android:text="تسجيل الخروج"
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
+                android:background="@drawable/circle_card"
                 android:layout_height="wrap_content"
-                android:id="@+id/logout" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/cairo_regular" app:layout_constraintStart_toEndOf="@+id/profile_image"
-                android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.936"
-                android:background="@drawable/rounded_red_box" android:textColor="#FFF" android:paddingStart="20dp"
-                android:paddingRight="20dp" app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
-
-        <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/enter_username"
-                android:ems="10"
-                android:background="@drawable/edittext_bordered_rounded"
-                android:id="@+id/profile_username"
-                android:layout_weight="1"
-                android:fontFamily="@font/cairo_regular"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="16dp"
+                android:id="@+id/linearLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/profile_gender"/>
-
-
-        <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="@string/profileSettings_address"
-                android:ems="10"
-                android:background="@drawable/edittext_bordered_rounded"
-                android:id="@+id/profile_age"
-                android:layout_weight="1"
-                android:fontFamily="@font/cairo_regular"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/address"/>
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintHorizontal_bias="0.063"
-                android:src="@drawable/male_user_icon"
-                android:id="@+id/profile_image" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
-        <Button
-                android:text="@string/profileSettings_save"
-                android:drawableLeft="@drawable/ic_save_white_24dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:id="@+id/profile_save"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="32dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:background="@drawable/main_button_box" android:textSize="16sp"
-                android:fontFamily="@font/cairo_regular" android:textColor="#FFF"
-                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-        />
+                app:layout_constraintHorizontal_bias="0.498"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/text_cont1" android:gravity="center"
+                    android:fontFamily="@font/cairo_bold" android:textSize="18sp" android:layout_marginTop="20dp"
+                    android:textColor="#fff" tools:text="TextView"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/text_cont2"
+                    android:fontFamily="@font/cairo_regular"
+                    android:gravity="center" android:textSize="18sp" android:textColor="#fff" tools:text="TextView"/>
+        </LinearLayout>
+        <ImageView
+                android:src="@drawable/lower_tool_box2"
+                android:layout_width="413dp"
+                android:layout_height="72dp"
+                android:id="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"/>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
@@ -145,54 +66,13 @@
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                 android:indeterminate="true" android:visibility="gone" app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/profile_save"
                 android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.0"/>
-        <Button
-                android:text="@string/relocate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/profile_getlocation"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/cairo_regular"
-                android:background="@drawable/rounded_button_baby_blue"
-                android:textColor="#fff"
-                android:drawableStart="@drawable/ic_location_on_black_24dp"
-                app:layout_constraintStart_toEndOf="@+id/profile_image"
-                android:layout_marginStart="16dp" android:layout_marginTop="24dp"
-                app:layout_constraintTop_toBottomOf="@+id/logout" app:layout_constraintHorizontal_bias="1.0"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/profile_gender" android:textSize="14sp"
-                android:textColor="#000" android:fontFamily="@font/cairo_regular" tools:text="الجنس : ذكر"
-                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_image"
-                app:layout_constraintHorizontal_bias="0.975"/>
+        />
 
-
-        <TextView
-                android:id="@+id/add_more_info_tip"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/more_info_about_your_personality"
-                android:fontFamily="@font/cairo_bold"
-                android:textSize="14sp"
-                android:background="@drawable/alert_box"
-                android:textColor="@android:color/white"
-                android:lines="2"
-                app:layout_constraintTop_toBottomOf="@+id/profile_age"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"/>
 
         <Button
                 android:id="@+id/add_more_questions"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/add_more"
                 android:fontFamily="@font/cairo_regular"
@@ -200,10 +80,10 @@
                 android:textColor="@android:color/white"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                app:layout_constraintTop_toBottomOf="@+id/add_more_info_tip"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp" app:layout_constraintHorizontal_bias="0.971"/>
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" android:gravity="start"/>
 
         <TextView
                 android:text="@string/edit_characteristics"
@@ -212,7 +92,6 @@
                 android:id="@+id/edit_characteristics"
                 android:background="@drawable/borderd_box"
                 android:drawableStart="@drawable/ic_keyboard_arrow_left_24dp"
-                app:layout_constraintBottom_toTopOf="@+id/profile_save" android:layout_marginBottom="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/add_more_questions"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="16dp"

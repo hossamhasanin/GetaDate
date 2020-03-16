@@ -55,10 +55,7 @@ class PickTimeFragment : BaseMainPageFragment() , KodeinAware{
     @ExperimentalTime
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
-        activity!!.right_icon.visibility = View.GONE
-        activity!!.left_icon.visibility = View.VISIBLE
-        (activity as MainActivity).currentPage = MainPages.PICK_TIME
+        activity?.toolbar!!.visibility = View.GONE
 
 
         viewModel = ViewModelProviders.of(this , pickTimeFactory).get(PickTimeViewModel::class.java)

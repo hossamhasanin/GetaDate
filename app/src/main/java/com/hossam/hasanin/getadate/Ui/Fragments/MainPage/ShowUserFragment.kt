@@ -26,6 +26,7 @@ import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.ShowUserFactory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.show_user_fragment.*
+import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
@@ -56,7 +57,8 @@ class ShowUserFragment : BaseMainPageFragment() , KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as MainActivity).currentPage = MainPages.SHOW_USER
+
+        activity?.toolbar!!.visibility = View.GONE
 
         viewModel = ViewModelProviders.of(this , showUserFactory).get(ShowUserViewModel::class.java)
 
