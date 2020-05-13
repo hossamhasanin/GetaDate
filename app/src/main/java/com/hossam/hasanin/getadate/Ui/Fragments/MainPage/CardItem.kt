@@ -1,6 +1,5 @@
 package com.hossam.hasanin.getadate.Ui.Fragments.MainPage
 
-import android.util.Log
 import com.hossam.hasanin.getadate.Models.UserCharacteristic
 import com.hossam.hasanin.getadate.R
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -11,7 +10,7 @@ class CardItem(val characteristic: UserCharacteristic , val quesNum: Int) : Item
     override fun getLayout() = R.layout.user_card
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.characteristic.text = characteristic.title
+        viewHolder.characteristic_1.text = characteristic.title
         val ratio:Double = characteristic.degree!!.toDouble() / quesNum.toDouble()
         if (ratio != 0.0 && ratio <= 0.2){
             viewHolder.heart_1.setImageResource(R.drawable.ic_favorite_pink)

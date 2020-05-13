@@ -21,7 +21,6 @@ import com.hossam.hasanin.getadate.Ui.MainActivity
 import com.hossam.hasanin.getadate.Ui.MainPages
 import com.hossam.hasanin.getadate.ViewModels.Factories.MainPage.MatchesFactory
 import com.hossam.hasanin.getadate.ViewModels.MainPage.MatchesViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.matches_fragment.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.left_icon
@@ -52,10 +51,7 @@ class MatchesFragment : BaseMainPageFragment() , KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
-        activity!!.right_icon.visibility = View.GONE
-        activity!!.left_icon.visibility = View.VISIBLE
-        (activity as MainActivity).currentPage = MainPages.MATCHES
+        activity!!.toolbar.visibility = View.VISIBLE
 
         viewModel = ViewModelProviders.of(this , matchesFactory).get(MatchesViewModel::class.java)
 

@@ -15,6 +15,7 @@ class CardsViewModel : ViewModel() {
     val currentUser = mAuth.currentUser
     val firestore = FirebaseFirestore.getInstance()
     val data = MutableLiveData<MutableList<User>>()
+    var chars = 1
 
     suspend fun getUsersData(lastUsename: String?) : Deferred<QuerySnapshot>{
         if (lastUsename.isNullOrEmpty()){

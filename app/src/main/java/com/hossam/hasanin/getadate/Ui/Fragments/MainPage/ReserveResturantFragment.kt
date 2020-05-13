@@ -47,10 +47,7 @@ class ReserveResturantFragment : BaseFragment() , KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity!!.left_icon.setImageResource(R.drawable.ic_arrow_back_black_24dp)
-        activity!!.right_icon.visibility = View.GONE
-        activity!!.left_icon.visibility = View.VISIBLE
-        (activity as MainActivity).currentPage = MainPages.RESERVE_RESTURANT
+        activity?.toolbar!!.visibility = View.GONE
 
         val args = arguments?.let { ReserveResturantFragmentArgs.fromBundle(it) }
         userId = args?.userId
